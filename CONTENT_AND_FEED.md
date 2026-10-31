@@ -4,6 +4,12 @@
 
 An app cannot promise infinitely many unique, reviewed Geeta shloks, images, or songs. It can provide an **effectively endless sequence of playable reels**. The server always returns another page by ranking a finite published catalog, cycling through eligible items when needed, and introducing newly approved variants over time. A repeat can be meaningful if presented as a different theme, visual treatment, explanation, or revisit; the app should never claim it is a new verse.
 
+## Curated content source
+
+The editorial reference list [`content/bhagavad-gita-daily-life.md`](content/bhagavad-gita-daily-life.md) contains a curated set of Bhagavad Gītā passages with Sanskrit text, English meaning, daily-life application, chapter/verse references, and online source links.
+
+This Markdown content is draft reference material, not a publishable feed catalog. Before an entry is promoted into the canonical `Shlok` record or a reel, an editor must verify the Sanskrit, translation or meaning rights, theological context, Hindi meaning, source credit, and the associated sound and visual assets. Keep `review_status` honest and serve only fully reviewed, playable records as described below.
+
 ### Supply model
 
 1. Maintain a canonical verse record: chapter, verse, verified Sanskrit, meaning, language, source and rights, themes, and editorial notes.
