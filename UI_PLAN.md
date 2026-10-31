@@ -2,7 +2,7 @@
 
 ## Design direction
 
-A quiet, cinematic canvas: deep indigo or charcoal, warm gold for scripture references and primary actions, restrained motion, and high-contrast text. Keep UI chrome light so the verse remains central. Avoid visual clutter, autoplay sound surprises, and gamified streak pressure.
+A quiet, cinematic canvas based on the supplied visual reference: near-black backgrounds, warm amber glow, luminous yellow primary actions, subtle stars and circular linework, restrained motion, and high-contrast text. Use original Geeta app branding and avoid astrology-specific symbols. The same dark theme applies to reels, comments, onboarding, and settings. The [Flutter design system](DESIGN_SYSTEM.md) defines exact tokens and component behavior. Keep UI chrome light so the verse remains central. Avoid visual clutter, autoplay sound surprises, and gamified streak pressure.
 
 The [two sample feed screens](mockups.svg) illustrate styles using Bhagavad Gita 2.47. The verse and Hindi meaning are draft display copy and must pass editorial review before production.
 
@@ -39,7 +39,7 @@ flowchart TD
 - Center/lower third: Sanskrit verse, then Hindi meaning in Sanskrit mode. On short screens, a compact verse preview opens the complete, scrollable text panel; never truncate silently.
 - Right rail: like, comments, share, and more. Show labels or accessible names and generous touch targets.
 - Bottom: sound control, pause/play affordance, source/translation credit, and progress indicator. Swiping changes reel; tapping media pauses/resumes.
-- Comments open a bottom sheet that preserves the current reel position and sound state. Composer uses sign-in when needed. Comment menu exposes report and block.
+- Comments open a dark bottom sheet that preserves the current reel position and sound state. Composer uses sign-in when needed. Comment menu exposes report and block.
 - Loading: poster image followed by video, then the next reel. On playback failure, show retry and skip; preserve the current feed position.
 
 ## Additional screen specifications
