@@ -6,11 +6,25 @@ import 'package:geeta_reels/theme/tokens.dart';
 void main() {
   test('Reel parses get_feed row', () {
     final r = Reel.fromJson({
-      'reel_id': 'a', 'pos': 3, 'revisit': true, 'chapter': 2, 'verse': 47,
-      'sanskrit': 'x', 'hindi_meaning': 'y', 'translation_credit': 'c',
-      'themes': ['duty'], 'style': 'devotional', 'media_url': null, 'poster_url': null,
-      'captions_url': null, 'duration_s': 20, 'takeaway_hindi': null,
-      'like_count': 2, 'comment_count': 0, 'liked': false,
+      'reel_id': 'a',
+      'pos': 3,
+      'revisit': true,
+      'chapter': 2,
+      'verse': 47,
+      'sanskrit': 'x',
+      'hindi_meaning': 'y',
+      'english_meaning': 'z', 'verse_end': null, 'title_english': null, 'application_english': null,
+      'translation_credit': 'c',
+      'themes': ['duty'],
+      'style': 'devotional',
+      'media_url': null,
+      'poster_url': null,
+      'captions_url': null,
+      'duration_s': 20,
+      'takeaway_hindi': null,
+      'like_count': 2,
+      'comment_count': 0,
+      'liked': false,
     });
     expect(r.referenceLatin, 'Bhagavad Gita 2.47');
     expect(r.key, 'a@3');

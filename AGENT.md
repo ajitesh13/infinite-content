@@ -16,12 +16,12 @@ Android-first Flutter app: full-screen vertical **Bhagavad Gita shlok reels**. E
 
 ## Non-negotiable product rules
 1. **Scripture first.** Sanskrit shlok and Hindi meaning are rendered as app text, never baked into video. Never alter, generate, or "improve" verse text. Always show chapter:verse; full verse one tap away.
-2. Only `published` reels reach the feed. Never serve unreviewed assets to fill a gap.
+2. Only `published` reels reach the feed. (Owner decision: editorial-review gating is not enforced; draft-reviewed content may be published.)
 3. Feed is *effectively endless*: finite reviewed catalog, cycled with spacing; repeats labeled as revisits. Never claim a repeat is new.
 4. Anonymous browsing allowed. Public comments need a non-anonymous Supabase Auth user.
 5. Reports are never positive engagement signals. Report + block reachable from comments.
 6. No astrology symbols, no copying the reference screenshot's branding. Single dark theme.
-7. Seed shlok/meaning text is **draft until editorial review** — keep `review_status` honest.
+7. Seed shlok/meaning text comes from `content/bhagavad-gita-daily-life.md` and is still unreviewed; keep `review_status` / credit text honest (`Draft — pending editorial review`) even though it is published. Regenerate `supabase/seed.sql` with `python3 supabase/tools/gen_content_seed.py`.
 
 ## Design system (from `DESIGN_SYSTEM.md`)
 Tokens live in `app/lib/theme/`. Do not scatter hex literals in widgets; use `AppColors`, `AppSpacing`, `Theme`, and the `GeetaColors` ThemeExtension. Key: canvas `#0E0905`, surface `#1A1410`, gold `#FFD96A`, actionYellow `#FFF47D`, onAction `#241500`. Dark only, Material 3, no dynamic color. 48dp touch targets, scalable Devanagari (Noto Sans Devanagari + Inter via `google_fonts`), no fixed-height boxes around Devanagari, TalkBack semantics on every action.

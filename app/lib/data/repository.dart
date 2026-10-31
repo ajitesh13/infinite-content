@@ -24,7 +24,7 @@ class Repository {
     if (_auth.currentSession == null) await _auth.signInAnonymously();
   }
 
-  Future<FeedPage> getFeed({required int cursor, int limit = 6, List<String> themes = const []}) async {
+  Future<FeedPage> getFeed({required int cursor, int limit = 10, List<String> themes = const []}) async {
     final rows = await _db.rpc('get_feed', params: {
       'p_limit': limit,
       'p_cursor': cursor,

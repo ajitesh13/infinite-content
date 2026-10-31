@@ -4,6 +4,7 @@ import 'package:uuid/uuid.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../data/models.dart';
+import '../../state/lang.dart';
 import '../../state/providers.dart';
 import '../../widgets/common.dart';
 import '../settings/settings_screen.dart';
@@ -56,7 +57,21 @@ class _FeedScreenState extends ConsumerState<FeedScreen> with WidgetsBindingObse
   List<Reel> get _reels => ref.read(feedProvider).reels;
 
   /// Keep only [index-1, index+2] initialised; dispose everything else.
+  static const _imageAhead = 10;
+  final _precached = <String>{};
+
+  /// Warm the image cache for the next reels so swipes never show a loading gradient.
+  void _precacheImages() {
+    final reels = _reels;
+    for (var i = _index; i <= _index + _imageAhead && i < reels.length; i++) {
+      final url = reels[i].posterUrl;
+      if (url == null || !_precached.add(url)) continue;
+      precacheImage(NetworkImage(url), context).catchError((_) => _precached.remove(url));
+    }
+  }
+
   void _syncControllers() {
+    _precacheImages();
     final reels = _reels;
     final keep = <String>{};
     for (var i = _index - _behind; i <= _index + _ahead; i++) {
@@ -67,16 +82,19 @@ class _FeedScreenState extends ConsumerState<FeedScreen> with WidgetsBindingObse
       if (_controllers.containsKey(r.key) || _failed.contains(r.key)) continue;
       final c = VideoPlayerController.networkUrl(Uri.parse(r.mediaUrl!));
       _controllers[r.key] = c;
-      c.initialize().then((_) {
-        c.setLooping(true);
-        _applyPlayback();
-        if (mounted) setState(() {});
-      }).catchError((_) {
-        _failed.add(r.key);
-        _controllers.remove(r.key)?.dispose();
-        _log(r, 'playback_error');
-        if (mounted) setState(() {});
-      });
+      c
+          .initialize()
+          .then((_) {
+            c.setLooping(true);
+            _applyPlayback();
+            if (mounted) setState(() {});
+          })
+          .catchError((_) {
+            _failed.add(r.key);
+            _controllers.remove(r.key)?.dispose();
+            _log(r, 'playback_error');
+            if (mounted) setState(() {});
+          });
     }
     for (final k in _controllers.keys.where((k) => !keep.contains(k)).toList()) {
       _controllers.remove(k)?.dispose();
@@ -114,7 +132,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> with WidgetsBindingObse
     _syncControllers();
     _applyPlayback();
     // Request more well before the queue runs out.
-    if (i >= reels.length - 3) ref.read(feedProvider.notifier).loadMore();
+    if (i >= reels.length - _imageAhead) ref.read(feedProvider.notifier).loadMore();
     setState(() {});
   }
 
@@ -125,15 +143,24 @@ class _FeedScreenState extends ConsumerState<FeedScreen> with WidgetsBindingObse
     final secs = _watch.elapsedMilliseconds / 1000;
     final dur = _controllers[reels[i].key]?.value.duration.inMilliseconds ?? 0;
     final completion = dur > 0 ? ((secs * 1000) / dur).clamp(0.0, 1.0) : null;
-    _log(reels[i], secs < 2 ? 'skip' : (completion != null && completion >= .9 ? 'complete' : 'watch'),
-        seconds: secs, completion: completion);
+    _log(
+      reels[i],
+      secs < 2 ? 'skip' : (completion != null && completion >= .9 ? 'complete' : 'watch'),
+      seconds: secs,
+      completion: completion,
+    );
   }
 
   void _log(Reel r, String kind, {double? seconds, double? completion}) {
     ref
         .read(repositoryProvider)
         .logEvent(
-            eventId: _uuid.v4(), reelId: r.id, kind: kind, activeSeconds: seconds, completion: completion)
+          eventId: _uuid.v4(),
+          reelId: r.id,
+          kind: kind,
+          activeSeconds: seconds,
+          completion: completion,
+        )
         .catchError((_) {}); // analytics must never break playback
   }
 
@@ -141,7 +168,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> with WidgetsBindingObse
     try {
       await ref.read(feedProvider.notifier).toggleLike(r);
     } catch (_) {
-      if (mounted) showStatus(context, 'पसंद सहेजी नहीं जा सकी।');
+      if (mounted) showStatus(context, context.tr('पसंद सहेजी नहीं जा सकी।', 'Could not save your like.'));
     }
   }
 
@@ -166,13 +193,22 @@ class _FeedScreenState extends ConsumerState<FeedScreen> with WidgetsBindingObse
         case MoreChoice.showLess:
           await repo.hideThemes(r.themes);
           _drop(r);
-          if (mounted) showStatus(context, 'ऐसे विषय कम दिखाए जाएँगे।');
+          if (mounted) {
+            showStatus(context, context.tr('ऐसे विषय कम दिखाए जाएँगे।', 'You will see fewer like this.'));
+          }
         case MoreChoice.report:
           await repo.reportReel(r.id, 'reported');
-          if (mounted) showStatus(context, 'रिपोर्ट मिल गई। धन्यवाद।');
+          if (mounted) {
+            showStatus(context, context.tr('रिपोर्ट मिल गई। धन्यवाद।', 'Report received. Thank you.'));
+          }
       }
     } catch (_) {
-      if (mounted) showStatus(context, 'कार्रवाई पूरी नहीं हुई। फिर प्रयास करें।');
+      if (mounted) {
+        showStatus(
+          context,
+          context.tr('कार्रवाई पूरी नहीं हुई। फिर प्रयास करें।', 'That did not work. Please try again.'),
+        );
+      }
     }
   }
 
@@ -214,8 +250,12 @@ class _FeedScreenState extends ConsumerState<FeedScreen> with WidgetsBindingObse
       return Scaffold(
         body: feed.error != null
             ? ErrorRetry(
-                message: 'फ़ीड लोड नहीं हो सकी। कनेक्शन जाँचें।',
-                onRetry: () => ref.read(feedProvider.notifier).refresh())
+                message: context.tr(
+                  'फ़ीड लोड नहीं हो सकी। कनेक्शन जाँचें।',
+                  'Could not load the feed. Check your connection.',
+                ),
+                onRetry: () => ref.read(feedProvider.notifier).refresh(),
+              )
             : const Center(child: CircularProgressIndicator(color: Color(0xFFFFD96A))),
       );
     }
@@ -223,50 +263,43 @@ class _FeedScreenState extends ConsumerState<FeedScreen> with WidgetsBindingObse
     final sound = ref.watch(soundOnProvider);
     return Scaffold(
       extendBodyBehindAppBar: true,
-      body: Stack(children: [
-        PageView.builder(
-          controller: _page,
-          scrollDirection: Axis.vertical,
-          onPageChanged: _onPageChanged,
-          itemCount: feed.reels.length,
-          itemBuilder: (_, i) {
-            final r = feed.reels[i];
-            final c = _controllers[r.key];
-            return ReelPage(
-              reel: r,
-              controller: c,
-              failed: _failed.contains(r.key),
-              paused: _userPaused,
-              soundOn: sound,
-              onTogglePause: () {
-                setState(() => _userPaused = !_userPaused);
-                _applyPlayback();
-              },
-              onToggleSound: () => ref.read(soundOnProvider.notifier).set(!sound),
-              onLike: () => _like(r),
-              onComments: () => _withReading(() => showComments(context, r)),
-              onMore: () => _more(r),
-              onReadFull: () => _withReading(() => VerseReader.show(context, r)),
-              onRetry: () => _retry(r),
-              onSkip: _skip,
-            );
-          },
-        ),
-        Positioned(
-          left: 56,
-          top: MediaQuery.paddingOf(context).top + 4,
-          child: Semantics(
-            button: true,
-            label: 'सेटिंग्स',
-            child: IconButton(
-              tooltip: 'सेटिंग्स',
-              icon: const Icon(Icons.settings_outlined),
-              onPressed: () => _withReading(() => Navigator.of(context)
-                  .push(MaterialPageRoute<void>(builder: (_) => const SettingsScreen()))),
-            ),
+      body: Stack(
+        children: [
+          PageView.builder(
+            controller: _page,
+            scrollDirection: Axis.vertical,
+            onPageChanged: _onPageChanged,
+            itemCount: feed.reels.length,
+            itemBuilder: (_, i) {
+              final r = feed.reels[i];
+              final c = _controllers[r.key];
+              return ReelPage(
+                reel: r,
+                controller: c,
+                failed: _failed.contains(r.key),
+                paused: _userPaused,
+                soundOn: sound,
+                onTogglePause: () {
+                  setState(() => _userPaused = !_userPaused);
+                  _applyPlayback();
+                },
+                onToggleSound: () => ref.read(soundOnProvider.notifier).set(!sound),
+                onLike: () => _like(r),
+                onComments: () => _withReading(() => showComments(context, r)),
+                onMore: () => _more(r),
+                onReadFull: () => _withReading(() => VerseReader.show(context, r)),
+                onRetry: () => _retry(r),
+                onSkip: _skip,
+                onSettings: () => _withReading(
+                  () =>
+                      Navigator.of(context)
+                          .push(MaterialPageRoute<void>(builder: (_) => const SettingsScreen())),
+                ),
+              );
+            },
           ),
-        ),
-      ]),
+        ],
+      ),
     );
   }
 }
