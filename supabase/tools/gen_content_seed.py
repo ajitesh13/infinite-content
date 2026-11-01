@@ -37,6 +37,41 @@ for b in re.split(r'\n(?=##+ )', text):
 items.sort(key=lambda i: (i['chapter'], i['verse']))
 
 bgs = sorted(f for f in os.listdir(os.path.join(ROOT, 'assets/background')) if f.endswith('.jpg'))
+
+# Match backgrounds to verses using assets/visual_catalog.md (primary fit = 3 pts, secondary = 1 pt).
+def _verse_key(tok):
+    m = re.match(r'\s*(?:Bhagavad Gītā\s+)?(\d+)\.(\d+)', tok)
+    return (int(m[1]), int(m[2])) if m else None
+
+fits = {}  # image -> list of (verse key, points)
+cat = open(os.path.join(ROOT, 'assets/visual_catalog.md'), encoding='utf-8').read()
+for blk in re.split(r'\n(?=## )', cat):
+    h = re.match(r'## (\S+\.jpg)', blk)
+    if not h: continue
+    pf = re.search(r'Primary verse fit:\*\* \*\*(.+?) —', blk)
+    sf = re.search(r'Secondary fits:\*\* (.+?)\.\n', blk)
+    out = []
+    if pf and _verse_key(pf[1]): out.append((_verse_key(pf[1]), 3))
+    if sf:
+        for t in sf[1].split(','):
+            t = t.strip()
+            k = _verse_key(t) or (None if not re.match(r'\d+(–\d+)?$', t) else None)
+            if k: out.append((k, 1))
+        # secondary fits omit the chapter prefix only in the sense of 'ch.v'; already handled above
+    fits[h[1]] = out
+
+used = {}
+def pick(i):
+    cands = sorted(((sum(pt for k, pt in fits.get(b, []) if k == (i['chapter'], i['verse'])), b) for b in bgs),
+                   key=lambda x: (-x[0], used.get(x[1], 0), x[1]))
+    best = [b for sc, b in cands if sc > 0]
+    choice = min(best, key=lambda b: used.get(b, 0)) if best else min(bgs, key=lambda b: (used.get(b, 0), b))
+    # prefer an unused fitting image over a reused better one
+    unused_fit = [b for b in best if not used.get(b)]
+    if unused_fit: choice = unused_fit[0]
+    used[choice] = used.get(choice, 0) + 1
+    return choice
+for i in items: i['bg'] = pick(i)
 q = lambda s: 'null' if s is None else '$q$' + s + '$q$'
 rows = []
 for n, i in enumerate(items):
@@ -57,7 +92,7 @@ with s as (
   ) as v(chapter, verse, verse_end, sanskrit, hindi_meaning, english_meaning, title_english, application_english, themes)
   returning id, chapter, verse
 ), posters(chapter, verse, poster_url) as (values
-""" + ',\n'.join("  (%d, %d, %s)" % (i['chapter'], i['verse'], q(BASE + bgs[n % len(bgs)])) for n, i in enumerate(items)) + """
+""" + ',\n'.join("  (%d, %d, %s)" % (i['chapter'], i['verse'], q(BASE + i['bg'])) for n, i in enumerate(items)) + """
 )
 insert into reels (shlok_id, style, status, published_at, duration_s, poster_url)
 select s.id, 'devotional', 'published', now(), 20, p.poster_url
