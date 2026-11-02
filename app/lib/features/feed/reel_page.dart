@@ -12,6 +12,7 @@ class ReelPage extends StatelessWidget {
   const ReelPage({
     super.key,
     required this.reel,
+    required this.active,
     required this.controller,
     required this.failed,
     required this.paused,
@@ -29,7 +30,7 @@ class ReelPage extends StatelessWidget {
 
   final Reel reel;
   final VideoPlayerController? controller;
-  final bool failed, paused, soundOn;
+  final bool active, failed, paused, soundOn;
   final VoidCallback onTogglePause,
       onToggleSound,
       onLike,
@@ -54,7 +55,7 @@ class ReelPage extends StatelessWidget {
         GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: onTogglePause,
-          child: _Backdrop(reel: reel, controller: ready ? c : null),
+          child: _Backdrop(reel: reel, controller: ready ? c : null, active: active, paused: paused),
         ),
         IgnorePointer(
           child: DecoratedBox(
@@ -186,13 +187,53 @@ class ReelPage extends StatelessWidget {
   }
 }
 
-class _Backdrop extends StatelessWidget {
-  const _Backdrop({required this.reel, required this.controller});
+class _Backdrop extends StatefulWidget {
+  const _Backdrop({required this.reel, required this.controller, required this.active, required this.paused});
   final Reel reel;
   final VideoPlayerController? controller;
+  final bool active, paused;
+
+  @override
+  State<_Backdrop> createState() => _BackdropState();
+}
+
+class _BackdropState extends State<_Backdrop> with SingleTickerProviderStateMixin {
+  /// Very slow push-in; snaps back to 1x and starts again.
+  static const _period = Duration(seconds: 14);
+  static const _maxScale = 1.15;
+  late final AnimationController _zoom = AnimationController(vsync: this, duration: _period);
+
+  @override
+  void initState() {
+    super.initState();
+    _sync();
+  }
+
+  @override
+  void didUpdateWidget(_Backdrop old) {
+    super.didUpdateWidget(old);
+    if (old.active != widget.active || old.paused != widget.paused) _sync();
+  }
+
+  void _sync() {
+    if (!widget.active) {
+      _zoom.reset(); // off screen: next visit starts from the beginning
+    } else if (widget.paused) {
+      _zoom.stop(); // paused keeps the current zoom
+    } else {
+      _zoom.repeat();
+    }
+  }
+
+  @override
+  void dispose() {
+    _zoom.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final reel = widget.reel;
     final fallback = DecoratedBox(
       decoration: BoxDecoration(
         gradient: RadialGradient(
@@ -204,16 +245,22 @@ class _Backdrop extends StatelessWidget {
       ),
       child: CustomPaint(painter: StarfieldPainter(seed: reel.chapter * 31 + reel.verse)),
     );
-    final c = controller;
+    final c = widget.controller;
     return Stack(
       fit: StackFit.expand,
       children: [
         if (reel.posterUrl != null)
-          Image.network(
-            reel.posterUrl!,
-            fit: BoxFit.cover,
-            loadingBuilder: (_, child, progress) => progress == null ? child : fallback,
-            errorBuilder: (_, _, _) => fallback,
+          ClipRect(
+            child: AnimatedBuilder(
+              animation: _zoom,
+              builder: (_, child) => Transform.scale(scale: 1 + (_maxScale - 1) * _zoom.value, child: child),
+              child: Image.network(
+                reel.posterUrl!,
+                fit: BoxFit.cover,
+                loadingBuilder: (_, child, progress) => progress == null ? child : fallback,
+                errorBuilder: (_, _, _) => fallback,
+              ),
+            ),
           )
         else
           fallback,

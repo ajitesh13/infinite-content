@@ -29,6 +29,18 @@ class SoundNotifier extends Notifier<bool> {
 
 final soundOnProvider = NotifierProvider<SoundNotifier, bool>(SoundNotifier.new);
 
+/// Move to the next reel when the shlok recitation ends (default on).
+class AutoScrollNotifier extends Notifier<bool> {
+  @override
+  bool build() => ref.read(prefsProvider).getBool('auto_scroll') ?? true;
+  void set(bool on) {
+    state = on;
+    ref.read(prefsProvider).setBool('auto_scroll', on);
+  }
+}
+
+final autoScrollProvider = NotifierProvider<AutoScrollNotifier, bool>(AutoScrollNotifier.new);
+
 class InterestsNotifier extends Notifier<List<String>> {
   @override
   List<String> build() => ref.read(prefsProvider).getStringList('interests') ?? const [];

@@ -37,6 +37,14 @@ class _FeedScreenState extends ConsumerState<FeedScreen> with WidgetsBindingObse
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     Future.microtask(() => ref.read(feedProvider.notifier).loadMore());
+    _audio.processingStateStream.listen((s) {
+      // Recitation finished (loop is off while auto scroll is on): go to the next reel.
+      if (s != ProcessingState.completed || !ref.read(autoScrollProvider)) return;
+      final key = _audioKey;
+      Future.delayed(const Duration(milliseconds: 1200), () {
+        if (mounted && key == _audioKey && _shouldPlay && ref.read(autoScrollProvider)) _skip();
+      });
+    });
   }
 
   @override
@@ -136,10 +144,13 @@ class _FeedScreenState extends ConsumerState<FeedScreen> with WidgetsBindingObse
         await _audio.stop();
         if (r.audioUrls.isEmpty || _audioKey != r.key) return;
         await _audio.setAudioSources([for (final u in r.audioUrls) AudioSource.uri(Uri.parse(u))]);
-        await _audio.setLoopMode(LoopMode.all);
       }
       if (_audioKey != r.key || r.audioUrls.isEmpty) return;
-      if (sound && _shouldPlay) {
+      // Always runs (muted when sound is off) so auto scroll can follow the recitation length.
+      await _audio.setVolume(sound ? 1 : 0);
+      await _audio.setLoopMode(ref.read(autoScrollProvider) ? LoopMode.off : LoopMode.all);
+      if (_shouldPlay) {
+        if (_audio.processingState == ProcessingState.completed) await _audio.seek(Duration.zero);
         _audio.play(); // not awaited: completes only when playback stops
       } else {
         await _audio.pause();
@@ -250,7 +261,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> with WidgetsBindingObse
 
   void _skip() {
     if (_index + 1 < _reels.length) {
-      _page.nextPage(duration: const Duration(milliseconds: 250), curve: Curves.easeOut);
+      _page.nextPage(duration: const Duration(milliseconds: 700), curve: Curves.easeInOutCubic);
     }
   }
 
@@ -264,6 +275,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> with WidgetsBindingObse
   Widget build(BuildContext context) {
     final feed = ref.watch(feedProvider);
     ref.listen(soundOnProvider, (_, _) => _applyPlayback());
+    ref.listen(autoScrollProvider, (_, _) => _applyPlayback());
     ref.listen(feedProvider.select((s) => s.reels.length), (prev, next) {
       if ((prev ?? 0) == 0 && next > 0) {
         _log(_reels[0], 'impression');
@@ -304,6 +316,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> with WidgetsBindingObse
               final c = _controllers[r.key];
               return ReelPage(
                 reel: r,
+                active: i == _index,
                 controller: c,
                 failed: _failed.contains(r.key),
                 paused: _userPaused,

@@ -38,6 +38,7 @@ class SettingsScreen extends ConsumerWidget {
     final repo = ref.watch(repositoryProvider);
     final registered = ref.watch(isRegisteredProvider);
     final sound = ref.watch(soundOnProvider);
+    final autoScroll = ref.watch(autoScrollProvider);
     final interests = ref.watch(interestsProvider);
 
     return Scaffold(
@@ -55,6 +56,14 @@ class SettingsScreen extends ConsumerWidget {
                     ref.read(soundOnProvider.notifier).set(v);
                     repo.saveProfile(soundDefault: v).catchError((_) {});
                   },
+                ),
+                SwitchListTile(
+                  title: Text(context.tr('ऑटो स्क्रॉल', 'Auto scroll')),
+                  subtitle: Text(
+                    context.tr('श्लोक पाठ पूरा होने पर अगली रील', 'Next reel when the recitation ends'),
+                  ),
+                  value: autoScroll,
+                  onChanged: (v) => ref.read(autoScrollProvider.notifier).set(v),
                 ),
               ],
             ),
