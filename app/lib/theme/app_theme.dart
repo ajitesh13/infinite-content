@@ -117,9 +117,11 @@ ThemeData buildAppTheme() {
     ),
     switchTheme: SwitchThemeData(
       thumbColor: WidgetStateProperty.resolveWith(
-          (s) => s.contains(WidgetState.selected) ? AppColors.onAction : AppColors.textSecondary),
+        (s) => s.contains(WidgetState.selected) ? AppColors.onAction : AppColors.textSecondary,
+      ),
       trackColor: WidgetStateProperty.resolveWith(
-          (s) => s.contains(WidgetState.selected) ? AppColors.actionYellow : AppColors.surfaceRaised),
+        (s) => s.contains(WidgetState.selected) ? AppColors.actionYellow : AppColors.surfaceRaised,
+      ),
     ),
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.canvas,

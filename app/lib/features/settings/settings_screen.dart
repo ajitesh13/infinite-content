@@ -161,6 +161,14 @@ class SettingsScreen extends ConsumerWidget {
               ),
               style: AppText.metadata,
             ),
+            const SizedBox(height: AppSpacing.s3),
+            Text(
+              context.tr(
+                'श्लोक पाठ: स्वामी ब्रह्मानन्द, Heritage IITK (CC BY-SA 4.0)।',
+                'Shlok recitation: Swami Brahmananda, Heritage IITK (CC BY-SA 4.0).',
+              ),
+              style: AppText.metadata,
+            ),
           ],
         ),
       ),

@@ -21,6 +21,7 @@ class Reel {
     required this.likeCount,
     required this.commentCount,
     required this.liked,
+    this.audioUrls = const [],
   });
 
   final String id;
@@ -34,6 +35,9 @@ class Reel {
   final String? mediaUrl, posterUrl, takeaway;
   final int likeCount, commentCount;
   final bool liked;
+
+  /// Shlok recitation, played in order (one file per verse).
+  final List<String> audioUrls;
 
   String get _verses => verseEnd == null ? '$verse' : '$verse–$verseEnd';
   String get reference => 'अध्याय $chapter · श्लोक $_verses';
@@ -72,6 +76,7 @@ class Reel {
     likeCount: likeCount ?? this.likeCount,
     commentCount: commentCount ?? this.commentCount,
     liked: liked ?? this.liked,
+    audioUrls: audioUrls,
   );
 
   factory Reel.fromJson(Map<String, dynamic> j) => Reel(
@@ -95,6 +100,7 @@ class Reel {
     likeCount: (j['like_count'] as num).toInt(),
     commentCount: (j['comment_count'] as num).toInt(),
     liked: j['liked'] as bool,
+    audioUrls: List<String>.from((j['audio_urls'] as List?) ?? const []),
   );
 }
 

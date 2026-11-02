@@ -7,7 +7,8 @@ Run from the repo root: python3 supabase/tools/gen_content_seed.py
 import re, os
 
 ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
-BASE = 'https://zsauxjqrtdrjbpanlypq.supabase.co/storage/v1/object/public/reels/backgrounds/'
+STORAGE = 'https://zsauxjqrtdrjbpanlypq.supabase.co/storage/v1/object/public/reels/'
+BASE = STORAGE + 'backgrounds/'
 
 SECTION_THEMES = {
     'Work, duty and focus': ['duty'],
@@ -33,7 +34,8 @@ for b in re.split(r'\n(?=##+ )', text):
                       title=m[4].strip(), section=sec, themes=SECTION_THEMES[sec],
                       sanskrit='\n'.join(l[2:] for l in b.split('\n') if l.startswith('> ')),
                       hindi=HINDI.get((int(m[1]), int(m[2]))) if not m[3] else None,
-                      english=g('Meaning'), application=g('Daily application')))
+                      english=g('Meaning'), application=g('Daily application'),
+                      audio=re.findall(r'\(\.\./assets/audio/([^)]+\.mp3)\)', (g('Audio') or ''))))
 items.sort(key=lambda i: (i['chapter'], i['verse']))
 
 bgs = sorted(f for f in os.listdir(os.path.join(ROOT, 'assets/background')) if f.endswith('.jpg'))
@@ -91,11 +93,11 @@ with s as (
 """ + ',\n'.join(rows) + f"""
   ) as v(chapter, verse, verse_end, sanskrit, hindi_meaning, english_meaning, title_english, application_english, themes)
   returning id, chapter, verse
-), posters(chapter, verse, poster_url) as (values
-""" + ',\n'.join("  (%d, %d, %s)" % (i['chapter'], i['verse'], q(BASE + i['bg'])) for n, i in enumerate(items)) + """
+), posters(chapter, verse, poster_url, audio_urls) as (values
+""" + ',\n'.join("  (%d, %d, %s, array[%s]::text[])" % (i['chapter'], i['verse'], q(BASE + i['bg']), ','.join(q(STORAGE + 'audio/' + a) for a in i['audio'])) for n, i in enumerate(items)) + """
 )
-insert into reels (shlok_id, style, status, published_at, duration_s, poster_url)
-select s.id, 'devotional', 'published', now(), 20, p.poster_url
+insert into reels (shlok_id, style, status, published_at, duration_s, poster_url, audio_urls)
+select s.id, 'devotional', 'published', now(), 20, p.poster_url, p.audio_urls
 from s join posters p using (chapter, verse);
 """
 open(os.path.join(ROOT, 'supabase/seed.sql'), 'w', encoding='utf-8').write(sql)

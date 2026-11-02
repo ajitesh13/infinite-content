@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:uuid/uuid.dart';
 import 'package:video_player/video_player.dart';
 
@@ -25,6 +26,8 @@ class _FeedScreenState extends ConsumerState<FeedScreen> with WidgetsBindingObse
   final _uuid = const Uuid();
   final _controllers = <String, VideoPlayerController>{};
   final _failed = <String>{};
+  final _audio = AudioPlayer();
+  String? _audioKey; // reel whose recitation is loaded
   int _index = 0;
   bool _userPaused = false, _reading = false, _background = false;
   final _watch = Stopwatch();
@@ -42,6 +45,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> with WidgetsBindingObse
     for (final c in _controllers.values) {
       c.dispose();
     }
+    _audio.dispose();
     _page.dispose();
     super.dispose();
   }
@@ -118,6 +122,31 @@ class _FeedScreenState extends ConsumerState<FeedScreen> with WidgetsBindingObse
       }
     }
     _shouldPlay ? _watch.start() : _watch.stop();
+    _applyAudio(sound);
+  }
+
+  /// Shlok recitation for the current reel; loops quietly while the reel is on screen.
+  Future<void> _applyAudio(bool sound) async {
+    final reels = _reels;
+    if (_index >= reels.length) return;
+    final r = reels[_index];
+    try {
+      if (_audioKey != r.key) {
+        _audioKey = r.key;
+        await _audio.stop();
+        if (r.audioUrls.isEmpty || _audioKey != r.key) return;
+        await _audio.setAudioSources([for (final u in r.audioUrls) AudioSource.uri(Uri.parse(u))]);
+        await _audio.setLoopMode(LoopMode.all);
+      }
+      if (_audioKey != r.key || r.audioUrls.isEmpty) return;
+      if (sound && _shouldPlay) {
+        _audio.play(); // not awaited: completes only when playback stops
+      } else {
+        await _audio.pause();
+      }
+    } catch (_) {
+      // Audio is optional; captions carry the meaning. Never break the reel.
+    }
   }
 
   void _onPageChanged(int i) {

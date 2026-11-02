@@ -25,11 +25,8 @@ class Repository {
   }
 
   Future<FeedPage> getFeed({required int cursor, int limit = 10, List<String> themes = const []}) async {
-    final rows = await _db.rpc('get_feed', params: {
-      'p_limit': limit,
-      'p_cursor': cursor,
-      'p_themes': themes,
-    }) as List;
+    final rows =
+        await _db.rpc('get_feed', params: {'p_limit': limit, 'p_cursor': cursor, 'p_themes': themes}) as List;
     final reels = rows.map((r) => Reel.fromJson(Map<String, dynamic>.from(r as Map))).toList();
     return FeedPage(reels, cursor + reels.length);
   }
@@ -82,29 +79,25 @@ class Repository {
     required String kind,
     double? activeSeconds,
     double? completion,
-  }) =>
-      _db.from('reel_events').upsert({
-        'id': eventId,
-        'user_id': uid,
-        'reel_id': reelId,
-        'kind': kind,
-        'active_seconds': activeSeconds,
-        'completion': completion,
-      }, ignoreDuplicates: true);
+  }) => _db.from('reel_events').upsert({
+    'id': eventId,
+    'user_id': uid,
+    'reel_id': reelId,
+    'kind': kind,
+    'active_seconds': activeSeconds,
+    'completion': completion,
+  }, ignoreDuplicates: true);
 
   Future<Map<String, dynamic>> profile() async =>
       await _db.from('profiles').select().eq('user_id', uid).maybeSingle() ?? {};
 
-  Future<void> saveProfile({String? displayName, List<String>? interests, bool? soundDefault}) =>
-      _db.from('profiles').update({
-        'display_name': ?displayName,
-        'interests': ?interests,
-        'sound_default': ?soundDefault,
-      }).eq('user_id', uid);
-
-  Future<void> resetPersonalization() => _db
+  Future<void> saveProfile({String? displayName, List<String>? interests, bool? soundDefault}) => _db
       .from('profiles')
-      .update({'interests': <String>[], 'hidden_themes': <String>[]}).eq('user_id', uid);
+      .update({'display_name': ?displayName, 'interests': ?interests, 'sound_default': ?soundDefault})
+      .eq('user_id', uid);
+
+  Future<void> resetPersonalization() =>
+      _db.from('profiles').update({'interests': <String>[], 'hidden_themes': <String>[]}).eq('user_id', uid);
 
   Future<void> signUp(String email, String password, String name) async {
     if (user != null && user!.isAnonymous) {

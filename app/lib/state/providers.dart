@@ -47,13 +47,18 @@ class FeedState {
   final bool loading;
   final Object? error;
 
-  FeedState copyWith({List<Reel>? reels, int? cursor, bool? loading, Object? error, bool clearError = false}) =>
-      FeedState(
-        reels: reels ?? this.reels,
-        cursor: cursor ?? this.cursor,
-        loading: loading ?? this.loading,
-        error: clearError ? null : (error ?? this.error),
-      );
+  FeedState copyWith({
+    List<Reel>? reels,
+    int? cursor,
+    bool? loading,
+    Object? error,
+    bool clearError = false,
+  }) => FeedState(
+    reels: reels ?? this.reels,
+    cursor: cursor ?? this.cursor,
+    loading: loading ?? this.loading,
+    error: clearError ? null : (error ?? this.error),
+  );
 }
 
 class FeedNotifier extends Notifier<FeedState> {
