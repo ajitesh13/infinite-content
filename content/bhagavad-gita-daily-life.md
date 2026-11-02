@@ -17,6 +17,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/2.40)
 
+**Audio:** [2.40](../assets/audio/SBG_2_40_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 2.47 — Focus on your action
 
 > कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।
@@ -27,6 +29,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** Focus on preparation, effort, honesty, and quality. Accept that promotions, praise, profits, and other results depend on many factors.
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/2.47)
+
+**Audio:** [2.47](../assets/audio/SBG_2_47_moolam_swmbrhm.mp3)
 
 ### Bhagavad Gītā 2.48 — Maintain balance
 
@@ -39,6 +43,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/2.48)
 
+**Audio:** [2.48](../assets/audio/SBG_2_48_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 2.50 — Excellence through inner balance
 
 > बुद्धियुक्तो जहातीह उभे सुकृतदुष्कृते।
@@ -49,6 +55,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** True excellence includes clear thinking, ethical conduct, emotional stability, and learning from results—not merely achieving an outcome.
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/2.50)
+
+**Audio:** [2.50](../assets/audio/SBG_2_50_moolam_swmbrhm.mp3)
 
 ### Bhagavad Gītā 3.5 — Nobody can remain inactive
 
@@ -61,6 +69,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/3.5)
 
+**Audio:** [3.5](../assets/audio/SBG_3_5_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 3.8 — Perform your responsibilities
 
 > नियतं कुरु कर्म त्वं कर्म ज्यायो ह्यकर्मणः।
@@ -71,6 +81,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** Take care of basic responsibilities—health, family, work, finances, and commitments—rather than escaping from them.
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/3.8)
+
+**Audio:** [3.8](../assets/audio/SBG_3_8_moolam_swmbrhm.mp3)
 
 ### Bhagavad Gītā 3.19 — Work without selfish attachment
 
@@ -83,6 +95,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/3.19)
 
+**Audio:** [3.19](../assets/audio/SBG_3_19_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 3.21 — Your conduct influences others
 
 > यद्यदाचरति श्रेष्ठस्तत्तदेवेतरो जनः।
@@ -93,6 +107,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** Parents, managers, teachers, and senior colleagues teach more through behavior than through instructions.
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/3.21)
+
+**Audio:** [3.21](../assets/audio/SBG_3_21_moolam_swmbrhm.mp3)
 
 ### Bhagavad Gītā 3.30 — Work without anxiety and possessiveness
 
@@ -105,6 +121,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/3.30)
 
+**Audio:** [3.30](../assets/audio/SBG_3_30_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 3.35 — Follow your own rightful path
 
 > श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात्।
@@ -116,6 +134,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/3.35)
 
+**Audio:** [3.35](../assets/audio/SBG_3_35_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 8.7 — Remember your values while acting
 
 > तस्मात्सर्वेषु कालेषु मामनुस्मर युध्य च।
@@ -126,6 +146,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** Spirituality does not require abandoning work. Remain mindful and ethical while handling ordinary responsibilities.
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/8.7)
+
+**Audio:** [8.7](../assets/audio/SBG_8_7_moolam_swmbrhm.mp3)
 
 ### Bhagavad Gītā 18.5–6 — Do not abandon good actions
 
@@ -141,6 +163,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [18.5](https://heritage.iitk.ac.in/SBG/18.5) · [18.6](https://heritage.iitk.ac.in/SBG/18.6)
 
+**Audio:** [18.5](../assets/audio/SBG_18_5_moolam_swmbrhm.mp3) · [18.6](../assets/audio/SBG_18_6_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 18.45–46 — Make your work meaningful
 
 > स्वे स्वे कर्मण्यभिरतः संसिद्धिं लभते नरः।
@@ -155,6 +179,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [18.45](https://heritage.iitk.ac.in/SBG/18.45) · [18.46](https://heritage.iitk.ac.in/SBG/18.46)
 
+**Audio:** [18.45](../assets/audio/SBG_18_45_moolam_swmbrhm.mp3) · [18.46](../assets/audio/SBG_18_46_moolam_swmbrhm.mp3)
+
 ## Managing stress, desire and anger
 
 ### Bhagavad Gītā 2.14 — Difficult experiences are temporary
@@ -168,6 +194,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/2.14)
 
+**Audio:** [2.14](../assets/audio/SBG_2_14_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 2.16 — Distinguish the temporary from the lasting
 
 > नासतो विद्यते भावो नाभावो विद्यते सतः।
@@ -178,6 +206,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** Fame, money, opinions, moods, possessions, and problems change. Give greater importance to character, truth, relationships, and inner stability.
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/2.16)
+
+**Audio:** [2.16](../assets/audio/SBG_2_16_moolam_swmbrhm.mp3)
 
 ### Bhagavad Gītā 2.22 — Change is part of life
 
@@ -192,6 +222,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/2.22)
 
+**Audio:** [2.22](../assets/audio/SBG_2_22_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 2.55 — Do not let endless desires control you
 
 > प्रजहाति यदा कामान् सर्वान् पार्थ मनोगतान्।
@@ -203,6 +235,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/2.55)
 
+**Audio:** [2.55](../assets/audio/SBG_2_55_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 2.56 — Emotional steadiness
 
 > दुःखेष्वनुद्विग्नमनाः सुखेषु विगतस्पृहः।
@@ -213,6 +247,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** Emotional maturity does not mean having no feelings. It means feelings do not control your words and decisions.
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/2.56)
+
+**Audio:** [2.56](../assets/audio/SBG_2_56_moolam_swmbrhm.mp3)
 
 ### Bhagavad Gītā 2.62–63 — The chain that leads to anger
 
@@ -228,6 +264,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [2.62](https://heritage.iitk.ac.in/SBG/2.62) · [2.63](https://heritage.iitk.ac.in/SBG/2.63)
 
+**Audio:** [2.62](../assets/audio/SBG_2_62_moolam_swmbrhm.mp3) · [2.63](../assets/audio/SBG_2_63_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 2.64–65 — Self-control produces clarity
 
 > रागद्वेषवियुक्तैस्तु विषयानिन्द्रियैश्चरन्।
@@ -241,6 +279,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** The goal is not necessarily to avoid everything enjoyable. It is to enjoy without becoming dependent or enslaved.
 
 [2.64](https://heritage.iitk.ac.in/SBG/2.64) · [2.65](https://heritage.iitk.ac.in/SBG/2.65)
+
+**Audio:** [2.64](../assets/audio/SBG_2_64_moolam_swmbrhm.mp3) · [2.65](../assets/audio/SBG_2_65_moolam_swmbrhm.mp3)
 
 ### Bhagavad Gītā 2.70–71 — Become like the ocean
 
@@ -256,6 +296,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [2.70](https://heritage.iitk.ac.in/SBG/2.70) · [2.71](https://heritage.iitk.ac.in/SBG/2.71)
 
+**Audio:** [2.70](../assets/audio/SBG_2_70_moolam_swmbrhm.mp3) · [2.71](../assets/audio/SBG_2_71_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 3.37 — Desire and anger are powerful enemies
 
 > काम एष क्रोध एष रजोगुणसमुद्भवः।
@@ -266,6 +308,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** When anger appears, ask: “What desire or expectation was frustrated?” This question often reveals the real cause.
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/3.37)
+
+**Audio:** [3.37](../assets/audio/SBG_3_37_moolam_swmbrhm.mp3)
 
 ### Bhagavad Gītā 5.22 — Sense pleasures are temporary
 
@@ -278,6 +322,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/5.22)
 
+**Audio:** [5.22](../assets/audio/SBG_5_22_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 5.23 — Learn to pause before reacting
 
 > शक्नोतीहैव यः सोढुं प्राक्शरीरविमोक्षणात्।
@@ -288,6 +334,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** Delay an angry message, argument, purchase, or decision by a few minutes. The pause gives wisdom a chance to act.
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/5.23)
+
+**Audio:** [5.23](../assets/audio/SBG_5_23_moolam_swmbrhm.mp3)
 
 ### Bhagavad Gītā 6.26 — Bring the wandering mind back
 
@@ -300,6 +348,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/6.26)
 
+**Audio:** [6.26](../assets/audio/SBG_6_26_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 6.35 — Practice and detachment control the mind
 
 > असंशयं महाबाहो मनो दुर्निग्रहं चलम्।
@@ -310,6 +360,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** Consistency matters more than intensity. Build routines and reduce unnecessary attachment to every thought or impulse.
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/6.35)
+
+**Audio:** [6.35](../assets/audio/SBG_6_35_moolam_swmbrhm.mp3)
 
 ### Bhagavad Gītā 14.17 — Understand your mental state
 
@@ -322,6 +374,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/14.17)
 
+**Audio:** [14.17](../assets/audio/SBG_14_17_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 16.21 — Avoid three destructive tendencies
 
 > त्रिविधं नरकस्येदं द्वारं नाशनमात्मनः।
@@ -332,6 +386,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** Treat uncontrolled craving, rage, and greed as warning signs—not as personality traits to be celebrated.
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/16.21)
+
+**Audio:** [16.21](../assets/audio/SBG_16_21_moolam_swmbrhm.mp3)
 
 ## Self-discipline, empathy and relationships
 
@@ -349,6 +405,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [6.5](https://heritage.iitk.ac.in/SBG/6.5) · [6.6](https://heritage.iitk.ac.in/SBG/6.6)
 
+**Audio:** [6.5](../assets/audio/SBG_6_5_moolam_swmbrhm.mp3) · [6.6](../assets/audio/SBG_6_6_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 6.16–17 — Moderation is essential
 
 > नात्यश्नतस्तु योगोऽस्ति न चैकान्तमनश्नतः।
@@ -363,6 +421,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [6.16](https://heritage.iitk.ac.in/SBG/6.16) · [6.17](https://heritage.iitk.ac.in/SBG/6.17)
 
+**Audio:** [6.16](../assets/audio/SBG_6_16_moolam_swmbrhm.mp3) · [6.17](../assets/audio/SBG_6_17_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 6.32 — Practise empathy
 
 > आत्मौपम्येन सर्वत्र समं पश्यति योऽर्जुन।
@@ -373,6 +433,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** Before speaking or acting, ask: “If someone treated me this way, how would I feel?”
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/6.32)
+
+**Audio:** [6.32](../assets/audio/SBG_6_32_moolam_swmbrhm.mp3)
 
 ### Bhagavad Gītā 4.34 — Learn through humility and questions
 
@@ -385,6 +447,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/4.34)
 
+**Audio:** [4.34](../assets/audio/SBG_4_34_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 4.39 — Faith, focus and self-control lead to knowledge
 
 > श्रद्धावान् लभते ज्ञानं तत्परः संयतेन्द्रियः।
@@ -395,6 +459,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** Real learning requires patience, attention, practice, and trust in a worthwhile process.
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/4.39)
+
+**Audio:** [4.39](../assets/audio/SBG_4_39_moolam_swmbrhm.mp3)
 
 ### Bhagavad Gītā 4.40 — Destructive doubt prevents peace
 
@@ -407,6 +473,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/4.40)
 
+**Audio:** [4.40](../assets/audio/SBG_4_40_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 5.10 — Act like a lotus leaf
 
 > ब्रह्मण्याधाय कर्माणि सङ्गं त्यक्त्वा करोति यः।
@@ -417,6 +485,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** Work in the world without allowing greed, corruption, resentment, or ego to contaminate your character.
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/5.10)
+
+**Audio:** [5.10](../assets/audio/SBG_5_10_moolam_swmbrhm.mp3)
 
 ### Bhagavad Gītā 5.18 — See equal dignity in all
 
@@ -429,6 +499,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/5.18)
 
+**Audio:** [5.18](../assets/audio/SBG_5_18_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 5.29 — Peace comes from seeing the Divine as everyone’s friend
 
 > भोक्तारं यज्ञतपसां सर्वलोकमहेश्वरम्।
@@ -439,6 +511,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** You are not isolated. Your actions affect family, society, nature, and future generations.
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/5.29)
+
+**Audio:** [5.29](../assets/audio/SBG_5_29_moolam_swmbrhm.mp3)
 
 ### Bhagavad Gītā 12.13–14 — The qualities of a good human being
 
@@ -454,6 +528,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [12.13](https://heritage.iitk.ac.in/SBG/12.13) · [12.14](https://heritage.iitk.ac.in/SBG/12.14)
 
+**Audio:** [12.13](../assets/audio/SBG_12_13_moolam_swmbrhm.mp3) · [12.14](../assets/audio/SBG_12_14_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 12.15 — Do not disturb others unnecessarily
 
 > यस्मान्नोद्विजते लोको लोकान्नोद्विजते च यः।
@@ -465,6 +541,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/12.15)
 
+**Audio:** [12.15](../assets/audio/SBG_12_15_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 12.17 — Freedom from emotional dependence
 
 > यो न हृष्यति न द्वेष्टि न शोचति न काङ्क्षति।
@@ -475,6 +553,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** Do not allow praise, criticism, gain, loss, victory, or defeat to completely determine your emotional state.
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/12.17)
+
+**Audio:** [12.17](../assets/audio/SBG_12_17_moolam_swmbrhm.mp3)
 
 ### Bhagavad Gītā 12.18–19 — Equanimity in relationships
 
@@ -490,6 +570,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [12.18](https://heritage.iitk.ac.in/SBG/12.18) · [12.19](https://heritage.iitk.ac.in/SBG/12.19)
 
+**Audio:** [12.18](../assets/audio/SBG_12_18_moolam_swmbrhm.mp3) · [12.19](../assets/audio/SBG_12_19_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 17.15–16 — Discipline of speech and mind
 
 > अनुद्वेगकरं वाक्यं सत्यं प्रियहितं च यत्।
@@ -503,6 +585,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** Before speaking, ask: Is it true? Is it useful? Is it kind? Is this the right time?
 
 [17.15](https://heritage.iitk.ac.in/SBG/17.15) · [17.16](https://heritage.iitk.ac.in/SBG/17.16)
+
+**Audio:** [17.15](../assets/audio/SBG_17_15_moolam_swmbrhm.mp3) · [17.16](../assets/audio/SBG_17_16_moolam_swmbrhm.mp3)
 
 ### Bhagavad Gītā 13.8–12 — A practical list of wisdom
 
@@ -527,6 +611,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [13.8](https://heritage.iitk.ac.in/SBG/13.8) · [13.9](https://heritage.iitk.ac.in/SBG/13.9) · [13.10](https://heritage.iitk.ac.in/SBG/13.10) · [13.11](https://heritage.iitk.ac.in/SBG/13.11) · [13.12](https://heritage.iitk.ac.in/SBG/13.12)
 
+**Audio:** [13.8](../assets/audio/SBG_13_8_moolam_swmbrhm.mp3) · [13.9](../assets/audio/SBG_13_9_moolam_swmbrhm.mp3) · [13.10](../assets/audio/SBG_13_10_moolam_swmbrhm.mp3) · [13.11](../assets/audio/SBG_13_11_moolam_swmbrhm.mp3) · [13.12](../assets/audio/SBG_13_12_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 13.28 — See the same Divine presence in all
 
 > समं सर्वेषु भूतेषु तिष्ठन्तं परमेश्वरम्।
@@ -537,6 +623,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** This vision encourages compassion, nonviolence, humility, and respect for every person.
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/13.28)
+
+**Audio:** [13.28](../assets/audio/SBG_13_28_moolam_swmbrhm.mp3)
 
 ## Devotion, character and life purpose
 
@@ -554,6 +642,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [4.7](https://heritage.iitk.ac.in/SBG/4.7) · [4.8](https://heritage.iitk.ac.in/SBG/4.8)
 
+**Audio:** [4.7](../assets/audio/SBG_4_7_moolam_swmbrhm.mp3) · [4.8](../assets/audio/SBG_4_8_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 9.26 — Sincerity matters more than grandeur
 
 > पत्रं पुष्पं फलं तोयं यो मे भक्त्या प्रयच्छति।
@@ -564,6 +654,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** A small act done with love and sincerity can be more meaningful than a large act done for display.
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/9.26)
+
+**Audio:** [9.26](../assets/audio/SBG_9_26_moolam_swmbrhm.mp3)
 
 ### Bhagavad Gītā 9.27 — Offer every activity to a higher purpose
 
@@ -576,6 +668,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/9.27)
 
+**Audio:** [9.27](../assets/audio/SBG_9_27_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 9.29 — The Divine is impartial
 
 > समोऽहं सर्वभूतेषु न मे द्वेष्योऽस्ति न प्रियः।
@@ -586,6 +680,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** Avoid spiritual arrogance. No person has a monopoly on human dignity or divine worth.
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/9.29)
+
+**Audio:** [9.29](../assets/audio/SBG_9_29_moolam_swmbrhm.mp3)
 
 ### Bhagavad Gītā 9.30–31 — Transformation is possible
 
@@ -601,6 +697,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [9.30](https://heritage.iitk.ac.in/SBG/9.30) · [9.31](https://heritage.iitk.ac.in/SBG/9.31)
 
+**Audio:** [9.30](../assets/audio/SBG_9_30_moolam_swmbrhm.mp3) · [9.31](../assets/audio/SBG_9_31_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 10.4–5 — Cultivate noble qualities
 
 > बुद्धिर्ज्ञानमसंमोहः क्षमा सत्यं दमः शमः।
@@ -615,6 +713,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [10.4](https://heritage.iitk.ac.in/SBG/10.4) · [10.5](https://heritage.iitk.ac.in/SBG/10.5)
 
+**Audio:** [10.4](../assets/audio/SBG_10_4_moolam_swmbrhm.mp3) · [10.5](../assets/audio/SBG_10_5_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 10.10 — Dedication brings clarity
 
 > तेषां सततयुक्तानां भजतां प्रीतिपूर्वकम्।
@@ -626,6 +726,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/10.10)
 
+**Audio:** [10.10](../assets/audio/SBG_10_10_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 10.20 — The Divine presence within
 
 > अहमात्मा गुडाकेश सर्वभूताशयस्थितः।
@@ -636,6 +738,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** Remember your deeper dignity and the dignity of others. Do not reduce yourself or anyone else to a job title, mistake, body, or social identity.
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/10.20)
+
+**Audio:** [10.20](../assets/audio/SBG_10_20_moolam_swmbrhm.mp3)
 
 ### Bhagavad Gītā 16.1–3 — Divine qualities
 
@@ -654,6 +758,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [16.1](https://heritage.iitk.ac.in/SBG/16.1) · [16.2](https://heritage.iitk.ac.in/SBG/16.2) · [16.3](https://heritage.iitk.ac.in/SBG/16.3)
 
+**Audio:** [16.1](../assets/audio/SBG_16_1_moolam_swmbrhm.mp3) · [16.2](../assets/audio/SBG_16_2_moolam_swmbrhm.mp3) · [16.3](../assets/audio/SBG_16_3_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 18.26 — The ideal attitude toward work
 
 > मुक्तसङ्गोऽनहंवादी धृत्युत्साहसमन्वितः।
@@ -664,6 +770,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** Be energetic without becoming arrogant, and ambitious without allowing achievement to define your entire identity.
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/18.26)
+
+**Audio:** [18.26](../assets/audio/SBG_18_26_moolam_swmbrhm.mp3)
 
 ### Bhagavad Gītā 18.30 — Use discrimination before making decisions
 
@@ -676,6 +784,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/18.30)
 
+**Audio:** [18.30](../assets/audio/SBG_18_30_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 18.33 — Develop steady determination
 
 > धृत्या यया धारयते मनःप्राणेन्द्रियक्रियाः।
@@ -686,6 +796,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** Motivation changes daily; disciplined commitment keeps you moving when motivation disappears.
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/18.33)
+
+**Audio:** [18.33](../assets/audio/SBG_18_33_moolam_swmbrhm.mp3)
 
 ### Bhagavad Gītā 18.63 — Think deeply and choose responsibly
 
@@ -698,6 +810,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/18.63)
 
+**Audio:** [18.63](../assets/audio/SBG_18_63_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 18.66 — Surrender fear and ego
 
 > सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज।
@@ -709,6 +823,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/18.66)
 
+**Audio:** [18.66](../assets/audio/SBG_18_66_moolam_swmbrhm.mp3)
+
 ### Bhagavad Gītā 18.78 — Wisdom and effort together
 
 > यत्र योगेश्वरः कृष्णो यत्र पार्थो धनुर्धरः।
@@ -719,6 +835,8 @@ This is a curated reference list of Bhagavad Gītā passages with practical rele
 **Daily application:** Good intentions alone are insufficient; effort alone can become directionless. Combine ethical wisdom with disciplined execution.
 
 [Source and translations](https://heritage.iitk.ac.in/SBG/18.78)
+
+**Audio:** [18.78](../assets/audio/SBG_18_78_moolam_swmbrhm.mp3)
 
 ## Editorial notes
 
