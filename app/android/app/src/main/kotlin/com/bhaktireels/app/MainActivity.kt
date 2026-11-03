@@ -1,4 +1,4 @@
-package com.geeta.geeta_reels
+package com.bhaktireels.app
 
 import io.flutter.embedding.android.FlutterActivity
 
