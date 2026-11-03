@@ -1,0 +1,48 @@
+# Chapter 4 (Jnana Karma Sannyasa Yoga): AI-drafted titles/daily notes + backgrounds.
+from bgutil import build
+
+D = {
+1: ("An ancient teaching", "Good teachings are passed on person to person. Think about who passed wisdom to you."),
+2: ("A teaching that was lost", "Even valuable knowledge fades if it is not practised and handed on."),
+3: ("Why Arjuna is told", "Wisdom is shared with those who are devoted and close. Be someone worth teaching."),
+4: ("How can that be?", "Arjuna asks a sharp question. Honest doubt is a good way to start learning."),
+5: ("Many births, one memory", "Krishna remembers all his births, while Arjuna remembers none. Perspective differs with awareness."),
+6: ("Born by his own power", "The verse says the divine takes birth by choice and not by compulsion, unlike us."),
+9: ("Knowing the divine and not returning", "Understanding what is divine in action and birth loosens the cycle of rebirth."),
+10: ("Fear, anger and attachment fall away", "Fear, anger and clinging drop as understanding grows. Work on one at a time."),
+11: ("As you approach, so you are met", "How you approach life and the divine shapes what you receive. Approach with sincerity."),
+12: ("Wanting quick results", "People often worship for fast success. Notice when you want shortcuts."),
+13: ("Duty by quality and work", "The verse speaks of roles formed from qualities and actions, not birth, and calls the divine the non-doer."),
+14: ("Actions do not stain", "Work done without craving for fruit does not bind you."),
+15: ("The ancients acted too", "Seekers in earlier ages did their work. Wisdom does not mean stepping away from duty."),
+16: ("What is action? What is inaction?", "Even the wise are confused here. Be willing to examine what you really do and avoid."),
+17: ("Hard to grasp", "Right action, wrong action and non-action are subtle. Think carefully before you act."),
+18: ("Seeing action in inaction", "Not doing something is also a choice. Own your silences as much as your actions."),
+19: ("Burnt by the fire of knowledge", "Actions free of selfish desire are called wise. Check your motives before you start."),
+20: ("Acting without clinging", "You can be fully busy and still not be bound by results."),
+21: ("Doing only what is needed", "Doing what the body and duty require, without greed, brings no regret."),
+22: ("Content with what comes", "Contentment lets you act steadily through success and failure."),
+23: ("Work as an offering", "When work is an offering and not a grab, it stops binding you."),
+24: ("Everything is Brahman", "In an offering, the act, the offerer and the fire are all one. Work with that attention."),
+25: ("Different ways of offering", "People serve in different ways. Respect other people's paths."),
+26: ("Offering the senses", "Restraint can itself be a form of worship. Try quiet, deliberate limits."),
+27: ("Offering the breath and the senses", "Inner discipline lit by knowledge is a sacrifice too."),
+28: ("Wealth, austerity, study", "Giving, discipline and learning are all valid offerings. Do the one you can do well."),
+29: ("The breath as an offering", "Breath practices steady the mind. Even a few quiet breaths help."),
+30: ("Moderate diet, steady breath", "Moderation in food and breath supports a calmer life."),
+31: ("Eat what remains after giving", "Share first and eat after. A life of giving is its own reward."),
+32: ("Many offerings, one source", "All these practices begin in action. Start with one small act."),
+33: ("Wisdom outweighs ritual", "Knowing why you act is worth more than the act alone."),
+35: ("Knowledge ends delusion", "Real understanding clears confusion for good. Learn patiently."),
+36: ("The raft of knowledge", "No past wrong is too large to be crossed by learning. You can always start over."),
+37: ("Fire reduces fuel to ash", "Understanding can dissolve old habits that effort alone cannot."),
+38: ("Nothing purifies like knowledge", "Learning cleans the mind. Make time for it, and it ripens in time."),
+41: ("Doubt cut by knowledge", "Doubts settle through knowledge and steady practice."),
+42: ("Take up the sword of knowledge", "Cut through doubt with understanding, then act. The chapter closes with 'Arise'."),
+}
+
+BG = build([
+    (1, 3, [15, 48, 41]), (4, 8, [39, 1, 3, 36, 33]), (9, 15, [10, 39, 23, 50, 15, 31, 36]),
+    (16, 23, [38, 2, 5, 20, 34, 28, 31, 16]), (24, 33, [37, 46, 26, 25, 43, 47, 42, 27, 4, 45]),
+    (34, 42, [50, 23, 10, 2, 38, 41, 31, 16, 39]),
+])

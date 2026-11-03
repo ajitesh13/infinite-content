@@ -12,4 +12,4 @@ matched backgrounds, AI-drafted titles/notes. ${2:-}
 Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_012AHCvTP6Cfhk2XAxrR2CRV"
 git push -q origin main
-git log --oneline | head -1
+git log -1 --oneline

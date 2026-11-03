@@ -6,6 +6,7 @@ REPAIRS = [
     (r'alities', 'qualities'), (r'ality', 'quality'), (r'coneror', 'conqueror'), (r'unconered', 'unconquered'),
     (r'conered', 'conquered'), (r'coner', 'conquer'), (r'acisition', 'acquisition'), (r'wisdon', 'wisdom'),
     (r'exellent', 'excellent'), (r'marshelled', 'marshalled'), (r'ivers', 'quivers'),
+    (r'ickly', 'quickly'), (r'attchment', 'attachment'), (r'estion', 'question'), (r'ï1thatï1', 'that'),
     (r'eal in battle', 'equal in battle'), (r'forth ite suddenly', 'forth quite suddenly'),
 ]
 

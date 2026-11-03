@@ -29,6 +29,7 @@ need_bg = sorted(all_v - extras)
 if sys.argv[2] == '--todo':
     print('need details (title, note):', need_details)
     print('need background for:', need_bg)
+    print('expected chapter reels:', len(need_bg))
     sys.exit(0)
 ts = sys.argv[2]
 det = importlib.import_module(f'chapter{ch}_details')
