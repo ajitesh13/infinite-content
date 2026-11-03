@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../data/models.dart';
 import '../../state/lang.dart';
+import '../../state/providers.dart';
 import '../../theme/app_theme.dart';
 import '../../theme/tokens.dart';
 import '../../widgets/common.dart';
@@ -20,7 +22,7 @@ class ReelPage extends StatelessWidget {
     required this.onTogglePause,
     required this.onToggleSound,
     required this.onLike,
-    required this.onComments,
+    required this.onShare,
     required this.onMore,
     required this.onReadFull,
     required this.onRetry,
@@ -34,7 +36,7 @@ class ReelPage extends StatelessWidget {
   final VoidCallback onTogglePause,
       onToggleSound,
       onLike,
-      onComments,
+      onShare,
       onMore,
       onReadFull,
       onRetry,
@@ -88,7 +90,7 @@ class ReelPage extends StatelessWidget {
             children: [
               Text(context.tr('गीता', 'Geeta'), style: AppText.sectionTitle.copyWith(color: AppColors.gold)),
               const SizedBox(width: AppSpacing.s2),
-              _ReferencePill(reel: reel, onTap: onReadFull),
+              _ReferencePill(reel: reel),
               if (reel.revisit)
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: AppSpacing.s2, vertical: 2),
@@ -134,13 +136,10 @@ class ReelPage extends StatelessWidget {
               ),
               const SizedBox(height: AppSpacing.s3),
               RailAction(
-                icon: Icons.chat_bubble_outline_rounded,
-                label: '${reel.commentCount}',
-                semanticLabel: context.tr(
-                  'टिप्पणियाँ, ${reel.commentCount}',
-                  'Comments, ${reel.commentCount}',
-                ),
-                onTap: onComments,
+                icon: Icons.share_outlined,
+                label: context.tr('शेयर', 'Share'),
+                semanticLabel: context.tr('यह श्लोक शेयर करें', 'Share this verse'),
+                onTap: onShare,
               ),
               const SizedBox(height: AppSpacing.s3),
               RailAction(
@@ -284,42 +283,74 @@ class _BackdropState extends State<_Backdrop> with SingleTickerProviderStateMixi
   }
 }
 
-class _ReferencePill extends StatelessWidget {
-  const _ReferencePill({required this.reel, required this.onTap});
+/// Chapter:verse chip. Tapping it expands the chapter menu (start a chapter, or back to the daily mix).
+class _ReferencePill extends ConsumerWidget {
+  const _ReferencePill({required this.reel});
   final Reel reel;
-  final VoidCallback onTap;
+
+  static const _dailyMix = 0; // menu value for the default feed
 
   @override
-  Widget build(BuildContext context) => Semantics(
-    button: true,
-    label: '${reel.referenceLatin}, ${context.tr('पूरा श्लोक पढ़ें', 'read full verse')}',
-    excludeSemantics: true,
-    child: InkWell(
-      borderRadius: BorderRadius.circular(AppSpacing.radiusPill),
-      onTap: onTap,
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(minHeight: AppSpacing.touchTarget),
-        child: Container(
-          alignment: Alignment.center,
-          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.s3),
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              color: AppColors.canvas.withValues(alpha: .6),
-              borderRadius: BorderRadius.circular(AppSpacing.radiusPill),
-              border: Border.all(color: AppColors.gold.withValues(alpha: .5)),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final current = ref.watch(chapterModeProvider);
+    return PopupMenuButton<int>(
+      tooltip: '',
+      color: AppColors.surface,
+      position: PopupMenuPosition.under,
+      constraints: const BoxConstraints(minWidth: 220, maxHeight: 420),
+      onSelected: (v) => ref.read(chapterModeProvider.notifier).set(v == _dailyMix ? null : v),
+      itemBuilder: (_) => [
+        CheckedPopupMenuItem<int>(
+          value: _dailyMix,
+          checked: current == null,
+          child: Text(context.tr('दैनिक चयन', 'Daily mix')),
+        ),
+        for (var c = 1; c <= 18; c++)
+          CheckedPopupMenuItem<int>(
+            value: c,
+            enabled: kAvailableChapters.contains(c),
+            checked: current == c,
+            child: Text(
+              kAvailableChapters.contains(c)
+                  ? context.tr('अध्याय $c से शुरू करें', 'Start from Chapter $c')
+                  : context.tr('अध्याय $c · शीघ्र आ रहा है', 'Chapter $c · coming soon'),
             ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.s3, vertical: 6),
-              child: Text(
-                reel.referenceFor(context.isEnglish),
-                style: AppText.metadata.copyWith(color: AppColors.gold),
+          ),
+      ],
+      child: Semantics(
+        button: true,
+        label: '${reel.referenceLatin}, ${context.tr('अध्याय मेनू खोलें', 'open chapter menu')}',
+        excludeSemantics: true,
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(minHeight: AppSpacing.touchTarget),
+          child: Container(
+            alignment: Alignment.center,
+            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.s3),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: AppColors.canvas.withValues(alpha: .6),
+                borderRadius: BorderRadius.circular(AppSpacing.radiusPill),
+                border: Border.all(color: AppColors.gold.withValues(alpha: .5)),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(left: AppSpacing.s3, right: AppSpacing.s2, top: 6, bottom: 6),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      reel.referenceFor(context.isEnglish),
+                      style: AppText.metadata.copyWith(color: AppColors.gold),
+                    ),
+                    const Icon(Icons.arrow_drop_down_rounded, size: 18, color: AppColors.gold),
+                  ],
+                ),
               ),
             ),
           ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 class _ScriptureBlock extends StatelessWidget {

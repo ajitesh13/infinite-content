@@ -14,7 +14,7 @@ This folder is a product and UI plan for an Android-first Flutter app. It contai
 
 - Android / Google Play for v1; Flutter client.
 - Supabase is the backend for the catalog, accounts, feed data, interactions, and media storage.
-- Full-screen vertical shlok reels, likes, and public comments.
+- Full-screen vertical shlok reels, likes, and sharing a verse.
 - Sanskrit shlok with Hindi meaning when Sanskrit is chosen.
 - Personalized ordering using meaningful viewing and interaction signals.
 - An uninterrupted feed experience, backed by a finite, reviewed content library.

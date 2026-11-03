@@ -3,7 +3,7 @@
 Guidance for any coding agent (Codex, Claude Code, Cursor, etc.). Mirrors `CLAUDE.md`; keep both in sync.
 
 ## What this project is
-Android-first Flutter app: full-screen vertical **Bhagavad Gita shlok reels**. Each reel = verified Sanskrit shlok + Hindi meaning + soothing audio + illustrative visual. Personalized ordering, likes, public comments, moderation. Backend: **Supabase**. Calm, respectful tone — not an engagement-maximizing feed.
+Android-first Flutter app: full-screen vertical **Bhagavad Gita shlok reels**. Each reel = verified Sanskrit shlok + Hindi meaning + soothing audio + illustrative visual. Personalized ordering, likes, sharing, moderation. Backend: **Supabase**. Calm, respectful tone — not an engagement-maximizing feed.
 
 ## Read order
 `README.md` → `PRODUCT_PLAN.md` → `CONTENT_AND_FEED.md` → `UI_PLAN.md` → `DESIGN_SYSTEM.md` → `mockups.svg`.
@@ -18,8 +18,8 @@ Android-first Flutter app: full-screen vertical **Bhagavad Gita shlok reels**. E
 1. **Scripture first.** Sanskrit shlok and Hindi meaning are rendered as app text, never baked into video. Never alter, generate, or "improve" verse text. Always show chapter:verse; full verse one tap away.
 2. Only `published` reels reach the feed. (Owner decision: editorial-review gating is not enforced; draft-reviewed content may be published.)
 3. Feed is *effectively endless*: finite reviewed catalog, cycled with spacing; repeats labeled as revisits. Never claim a repeat is new.
-4. Anonymous browsing allowed. Public comments need a non-anonymous Supabase Auth user.
-5. Reports are never positive engagement signals. Report + block reachable from comments.
+4. Anonymous browsing allowed. In-app comments were removed (tables remain in the DB, unused); sharing is text via the system share sheet.
+5. Reports are never positive engagement signals. Report is reachable from the reel More menu.
 6. No astrology symbols, no copying the reference screenshot's branding. Single dark theme.
 7. Seed shlok/meaning text comes from `content/bhagavad-gita-daily-life.md` and is still unreviewed; keep `review_status` / credit text honest (`Draft — pending editorial review`) even though it is published. Regenerate `supabase/seed.sql` with `python3 supabase/tools/gen_content_seed.py`.
 
@@ -49,6 +49,8 @@ supabase projects api-keys --project-ref zsauxjqrtdrjbpanlypq
 Client config (`SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`) lives in gitignored `.secrets/dart_defines.json`. Build/run with `--dart-define-from-file=../.secrets/dart_defines.json`. Build env: `JAVA_HOME=/opt/homebrew/opt/openjdk@17`, `ANDROID_HOME=~/Library/Android/sdk`. No emulator installed yet (`sdkmanager "system-images;android-35;google_apis;arm64-v8a"`).
 
 ## Conventions
+- Versioning is SemVer (`MAJOR.MINOR.PATCH+build` in `app/pubspec.yaml`): MAJOR = breaking/incompatible change, MINOR = backwards-compatible feature, PATCH = bug fix. Bump the `+build` number on every Play upload (it must increase). First version is `0.0.1+1`; stay on `0.x` until the public launch (`1.0.0`).
+- Crash reporting (Firebase Crashlytics) is deliberately not included yet; add it later when `google-services.json` exists.
 - Android only for v1; don't add iOS/web targets.
 - Match existing code style; keep widgets small and token-driven.
 - Schema changes = new migration file, never edit applied migrations.

@@ -148,8 +148,8 @@ class SettingsScreen extends ConsumerWidget {
                         context,
                         context.tr('खाता हटाएँ?', 'Delete account?'),
                         context.tr(
-                          'आपका खाता, पसंद और टिप्पणियाँ स्थायी रूप से हट जाएँगी।',
-                          'Your account, likes and comments will be permanently deleted.',
+                          'आपका खाता और पसंद स्थायी रूप से हट जाएँगी।',
+                          'Your account and likes will be permanently deleted.',
                         ),
                       )) {
                         return;

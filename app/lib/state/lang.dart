@@ -3,10 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'providers.dart';
 
-/// UI language: Hindi (default) or English. The Sanskrit shlok is never translated.
+/// UI language: English (default) or Hindi. The Sanskrit shlok is never translated.
 class EnglishNotifier extends Notifier<bool> {
   @override
-  bool build() => ref.read(prefsProvider).getBool('english') ?? false;
+  bool build() => ref.read(prefsProvider).getBool('english') ?? true;
   void set(bool on) {
     state = on;
     ref.read(prefsProvider).setBool('english', on);
@@ -25,6 +25,6 @@ class LangScope extends InheritedWidget {
 }
 
 extension LangContext on BuildContext {
-  bool get isEnglish => dependOnInheritedWidgetOfExactType<LangScope>()?.english ?? false;
+  bool get isEnglish => dependOnInheritedWidgetOfExactType<LangScope>()?.english ?? true;
   String tr(String hi, String en) => isEnglish ? en : hi;
 }

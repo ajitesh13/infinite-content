@@ -24,9 +24,16 @@ class Repository {
     if (_auth.currentSession == null) await _auth.signInAnonymously();
   }
 
-  Future<FeedPage> getFeed({required int cursor, int limit = 10, List<String> themes = const []}) async {
-    final rows =
-        await _db.rpc('get_feed', params: {'p_limit': limit, 'p_cursor': cursor, 'p_themes': themes}) as List;
+  Future<FeedPage> getFeed({
+    required int cursor,
+    int limit = 10,
+    List<String> themes = const [],
+    int? chapter,
+  }) async {
+    final rows = await _db.rpc(
+      'get_feed',
+      params: {'p_limit': limit, 'p_cursor': cursor, 'p_themes': themes, 'p_chapter': chapter},
+    ) as List;
     final reels = rows.map((r) => Reel.fromJson(Map<String, dynamic>.from(r as Map))).toList();
     return FeedPage(reels, cursor + reels.length);
   }
@@ -38,24 +45,6 @@ class Repository {
       await _db.from('likes').delete().match({'user_id': uid, 'reel_id': reelId});
     }
   }
-
-  Future<List<Comment>> comments(String reelId) async {
-    final rows = await _db
-        .from('comment_feed')
-        .select()
-        .eq('reel_id', reelId)
-        .order('created_at', ascending: false)
-        .limit(100);
-    return rows.map(Comment.fromJson).toList();
-  }
-
-  Future<void> postComment(String reelId, String body) =>
-      _db.from('comments').insert({'reel_id': reelId, 'user_id': uid, 'body': body.trim()});
-
-  Future<void> deleteComment(String id) => _db.from('comments').delete().eq('id', id);
-
-  Future<void> reportComment(String id, String reason) =>
-      _db.from('comment_reports').upsert({'comment_id': id, 'reporter_id': uid, 'reason': reason});
 
   Future<void> reportReel(String id, String reason) =>
       _db.from('reel_reports').upsert({'reel_id': id, 'reporter_id': uid, 'reason': reason});

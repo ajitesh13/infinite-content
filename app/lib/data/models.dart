@@ -19,7 +19,6 @@ class Reel {
     required this.posterUrl,
     required this.takeaway,
     required this.likeCount,
-    required this.commentCount,
     required this.liked,
     this.audioUrls = const [],
   });
@@ -33,7 +32,7 @@ class Reel {
   final int? verseEnd;
   final List<String> themes;
   final String? mediaUrl, posterUrl, takeaway;
-  final int likeCount, commentCount;
+  final int likeCount;
   final bool liked;
 
   /// Shlok recitation, played in order (one file per verse).
@@ -55,7 +54,7 @@ class Reel {
 
   String get key => '$id@$pos';
 
-  Reel copyWith({bool? liked, int? likeCount, int? commentCount}) => Reel(
+  Reel copyWith({bool? liked, int? likeCount}) => Reel(
     id: id,
     pos: pos,
     revisit: revisit,
@@ -74,7 +73,6 @@ class Reel {
     posterUrl: posterUrl,
     takeaway: takeaway,
     likeCount: likeCount ?? this.likeCount,
-    commentCount: commentCount ?? this.commentCount,
     liked: liked ?? this.liked,
     audioUrls: audioUrls,
   );
@@ -98,30 +96,8 @@ class Reel {
     posterUrl: j['poster_url'] as String?,
     takeaway: j['takeaway_hindi'] as String?,
     likeCount: (j['like_count'] as num).toInt(),
-    commentCount: (j['comment_count'] as num).toInt(),
     liked: j['liked'] as bool,
     audioUrls: List<String>.from((j['audio_urls'] as List?) ?? const []),
-  );
-}
-
-class Comment {
-  const Comment({
-    required this.id,
-    required this.userId,
-    required this.author,
-    required this.body,
-    required this.createdAt,
-  });
-
-  final String id, userId, author, body;
-  final DateTime createdAt;
-
-  factory Comment.fromJson(Map<String, dynamic> j) => Comment(
-    id: j['id'] as String,
-    userId: j['user_id'] as String,
-    author: j['author_name'] as String,
-    body: j['body'] as String,
-    createdAt: DateTime.parse(j['created_at'] as String),
   );
 }
 

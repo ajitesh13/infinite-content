@@ -52,6 +52,18 @@ class InterestsNotifier extends Notifier<List<String>> {
 
 final interestsProvider = NotifierProvider<InterestsNotifier, List<String>>(InterestsNotifier.new);
 
+/// Chapter being read in order, or null for the default daily mix. Not persisted: every launch starts in the default feed.
+class ChapterModeNotifier extends Notifier<int?> {
+  @override
+  int? build() => null;
+  void set(int? chapter) => state = chapter;
+}
+
+final chapterModeProvider = NotifierProvider<ChapterModeNotifier, int?>(ChapterModeNotifier.new);
+
+/// Chapters that can be started from the menu (others show as coming soon).
+const kAvailableChapters = {1, 2};
+
 class FeedState {
   const FeedState({this.reels = const [], this.cursor = 0, this.loading = false, this.error});
   final List<Reel> reels;
@@ -82,17 +94,28 @@ class FeedNotifier extends Notifier<FeedState> {
   /// Ask for more before the queue runs dry; never wait for the final item.
   Future<void> loadMore() async {
     if (state.loading) return;
+    final gen = _gen;
     state = state.copyWith(loading: true, clearError: true);
     try {
       await _repo.ensureSession();
-      final page = await _repo.getFeed(cursor: state.cursor, themes: ref.read(interestsProvider));
+      final chapter = ref.read(chapterModeProvider);
+      final page = await _repo.getFeed(
+        cursor: state.cursor,
+        themes: chapter == null ? ref.read(interestsProvider) : const [],
+        chapter: chapter,
+      );
+      if (gen != _gen) return; // mode changed while loading; drop the stale page
       state = state.copyWith(reels: [...state.reels, ...page.reels], cursor: page.nextCursor, loading: false);
     } catch (e) {
+      if (gen != _gen) return;
       state = state.copyWith(loading: false, error: e);
     }
   }
 
+  int _gen = 0; // bumped on refresh so in-flight pages from the old mode are ignored
+
   Future<void> refresh() async {
+    _gen++;
     state = const FeedState();
     await loadMore();
   }
@@ -107,9 +130,6 @@ class FeedNotifier extends Notifier<FeedState> {
       rethrow;
     }
   }
-
-  void bumpComments(String reelId, int delta) =>
-      _replaceAll(reelId, (r) => r.copyWith(commentCount: (r.commentCount + delta).clamp(0, 1 << 30)));
 
   void removeReel(String reelId) =>
       state = state.copyWith(reels: state.reels.where((r) => r.id != reelId).toList());

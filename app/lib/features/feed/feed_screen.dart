@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:uuid/uuid.dart';
 import 'package:video_player/video_player.dart';
 
@@ -22,7 +23,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> with WidgetsBindingObse
   static const _ahead = 2; // current + 2 upcoming preloaded
   static const _behind = 1; // previous retained for back swipe
 
-  final _page = PageController();
+  var _page = PageController();
   final _uuid = const Uuid();
   final _controllers = <String, VideoPlayerController>{};
   final _failed = <String>{};
@@ -41,7 +42,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> with WidgetsBindingObse
       // Recitation finished (loop is off while auto scroll is on): go to the next reel.
       if (s != ProcessingState.completed || !ref.read(autoScrollProvider)) return;
       final key = _audioKey;
-      Future.delayed(const Duration(milliseconds: 1200), () {
+      Future.delayed(const Duration(milliseconds: 1199), () {
         if (mounted && key == _audioKey && _shouldPlay && ref.read(autoScrollProvider)) _skip();
       });
     });
@@ -212,6 +213,26 @@ class _FeedScreenState extends ConsumerState<FeedScreen> with WidgetsBindingObse
     }
   }
 
+  /// Shares the verse as text: Sanskrit, reference and meaning (when there is one).
+  Future<void> _share(Reel r) async {
+    final english = ref.read(englishProvider);
+    final meaning = r.meaning(english).trim();
+    final text = [
+      r.sanskrit,
+      '— ${r.referenceFor(english)}',
+      if (meaning.isNotEmpty) meaning,
+      english ? 'Shared from the Geeta app' : 'गीता ऐप से साझा किया गया',
+    ].join('\n\n');
+    final box = context.findRenderObject() as RenderBox?;
+    await SharePlus.instance.share(
+      ShareParams(
+        text: text,
+        subject: r.referenceLatin,
+        sharePositionOrigin: box == null ? null : box.localToGlobal(Offset.zero) & box.size,
+      ),
+    );
+  }
+
   Future<void> _withReading(Future<void> Function() body) async {
     _reading = true;
     _applyPlayback();
@@ -259,6 +280,27 @@ class _FeedScreenState extends ConsumerState<FeedScreen> with WidgetsBindingObse
     _applyPlayback();
   }
 
+  /// Chapter menu choice: drop everything from the old feed and start again from the first reel.
+  void _resetForMode() {
+    for (final c in _controllers.values) {
+      c.dispose();
+    }
+    _controllers.clear();
+    _failed.clear();
+    _precached.clear();
+    _audioKey = null;
+    _audio.stop();
+    _finishView(_index);
+    _index = 0;
+    _userPaused = false;
+    _watch.reset();
+    final old = _page;
+    _page = PageController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => old.dispose());
+    ref.read(feedProvider.notifier).refresh();
+    setState(() {});
+  }
+
   void _skip() {
     if (_index + 1 < _reels.length) {
       _page.nextPage(duration: const Duration(milliseconds: 700), curve: Curves.easeInOutCubic);
@@ -274,6 +316,9 @@ class _FeedScreenState extends ConsumerState<FeedScreen> with WidgetsBindingObse
   @override
   Widget build(BuildContext context) {
     final feed = ref.watch(feedProvider);
+    ref.listen(chapterModeProvider, (prev, next) {
+      if (prev != next) _resetForMode();
+    });
     ref.listen(soundOnProvider, (_, _) => _applyPlayback());
     ref.listen(autoScrollProvider, (_, _) => _applyPlayback());
     ref.listen(feedProvider.select((s) => s.reels.length), (prev, next) {
@@ -327,7 +372,7 @@ class _FeedScreenState extends ConsumerState<FeedScreen> with WidgetsBindingObse
                 },
                 onToggleSound: () => ref.read(soundOnProvider.notifier).set(!sound),
                 onLike: () => _like(r),
-                onComments: () => _withReading(() => showComments(context, r)),
+                onShare: () => _share(r),
                 onMore: () => _more(r),
                 onReadFull: () => _withReading(() => VerseReader.show(context, r)),
                 onRetry: () => _retry(r),
