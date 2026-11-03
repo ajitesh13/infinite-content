@@ -6,15 +6,35 @@ verses with no existing shlok row, BG = background number per chapter reel).
  - Verses already in the daily mix keep their Sanskrit, title and note; they only gain Heritage meanings.
    Existing two-verse entries (verse_end) get both verses' translations joined and one reel with both audio files.
  - Every shlok row of the chapter gets one feed_mode='chapter' reel (skipped if it already has one).
-Usage (repo root): python3 supabase/tools/gen_chapter_migration.py <chapter> <timestamp>
+Usage (repo root): python3 supabase/tools/gen_chapter_migration.py <chapter> <timestamp|--todo>
 """
 import importlib, json, os, re, sys
+sys.path.insert(0, os.path.dirname(__file__))
+from text_repairs import repair
 
 ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
 sys.path.insert(0, os.path.join(ROOT, 'content'))
-ch, ts = int(sys.argv[1]), sys.argv[2]
-det = importlib.import_module(f'chapter{ch}_details')
+ch = int(sys.argv[1])
 rows = json.load(open(os.path.join(ROOT, f'content/chapter{ch}.json'), encoding='utf-8'))
+
+# Verses already in the daily mix (content md headings): they keep their text; ranges swallow later verses.
+existing, extras = set(), set()
+for m in re.finditer(r'^### Bhagavad Gītā %d\.(\d+)(?:[–-](\d+))?' % ch,
+                     open(os.path.join(ROOT, 'content/bhagavad-gita-daily-life.md'), encoding='utf-8').read(), re.M):
+    a = int(m[1]); b = int(m[2]) if m[2] else a
+    existing |= set(range(a, b + 1)); extras |= set(range(a + 1, b + 1))
+all_v = {r['verse'] for r in rows}
+need_details = sorted(all_v - existing)
+need_bg = sorted(all_v - extras)
+if sys.argv[2] == '--todo':
+    print('need details (title, note):', need_details)
+    print('need background for:', need_bg)
+    sys.exit(0)
+ts = sys.argv[2]
+det = importlib.import_module(f'chapter{ch}_details')
+assert sorted(det.D) == need_details, ('details mismatch', sorted(set(need_details) ^ set(det.D)))
+assert set(need_bg) <= set(det.BG), ('missing backgrounds', sorted(set(need_bg) - set(det.BG)))
+assert all(1 <= n <= 50 for n in det.BG.values())
 STORAGE = 'https://zsauxjqrtdrjbpanlypq.supabase.co/storage/v1/object/public/reels/'
 files = {f.split('-')[2]: f for f in os.listdir(os.path.join(ROOT, 'assets/background')) if f.endswith('.jpg')}
 CREDIT = ('Sanskrit: moolam via Heritage IITK (public domain). Recitation: Swami Brahmananda, CC BY-SA 4.0, Heritage IITK. '
@@ -29,9 +49,8 @@ def clean(s):
     return '\n'.join(lines)
 
 by_v = {r['verse']: r for r in rows}
-assert sorted(det.D) and all(v in by_v for v in det.D)
 new_vals = ',\n'.join('  (%d, %s, %s, %s)' % (v, q(clean(by_v[v]['sanskrit'])), q(t), q(a)) for v, (t, a) in sorted(det.D.items()))
-m_vals = ',\n'.join('  (%d, %s, %s, %s, %s)' % (r['verse'], q(r['en']), q(r['hi']), q(STORAGE + 'audio/' + r['audio']),
+m_vals = ',\n'.join('  (%d, %s, %s, %s, %s)' % (r['verse'], q(repair(r['en'])), q(r['hi']), q(STORAGE + 'audio/' + r['audio']),
                     q(STORAGE + 'backgrounds/' + files['%02d' % det.BG[r['verse']]]) if r['verse'] in det.BG else 'null')
                     for r in rows)
 d_list = ','.join(str(v) for v in sorted(det.D))

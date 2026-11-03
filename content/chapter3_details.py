@@ -1,0 +1,47 @@
+# Chapter 3 (Karma Yoga): AI-drafted titles/daily notes for verses with no editorial entry, plus backgrounds.
+from bgutil import build
+
+D = {
+1: ("If knowledge is higher, why act?", "A teacher's mixed messages can feel confusing. Ask directly when guidance seems to contradict itself."),
+2: ("Arjuna asks for one clear path", "When you are overwhelmed, ask for the single most useful next step."),
+3: ("Two paths: knowledge and action", "People grow in different ways. Find the route that fits you instead of copying someone else's."),
+4: ("Not acting is not freedom", "Skipping your responsibilities does not make you free. Real freedom is a way of acting."),
+6: ("The hypocrite who only looks calm", "Sitting still while the mind chases desires is pretence. Match your inner and outer life."),
+7: ("Control the mind, then act", "Use your mind to steer your senses, then do your work without clinging."),
+9: ("Work done as an offering", "Work done for a larger purpose than yourself binds you less than work done only for gain."),
+10: ("Giving is built into life", "Life runs on exchange. Ask what you give back, not only what you take."),
+11: ("Nourish one another", "Healthy lives are mutual: you support others and they support you."),
+12: ("Enjoying without giving is theft", "Notice what you use daily, such as food, work and others' effort, and give something back."),
+13: ("Share before you eat", "Food shared with others nourishes more than food hoarded for yourself."),
+14: ("The chain from food to action", "Everything you eat and use comes from a long chain of effort and nature. Remember it."),
+15: ("Action rooted in the larger whole", "Your work is part of something bigger than your own plans."),
+16: ("A life that only takes is wasted", "Taking part in the cycle of giving and receiving makes a life meaningful."),
+17: ("One content within", "Inner contentment reduces how much you need from outside."),
+18: ("Free of dependence", "The less you depend on specific outcomes, the freer your actions become."),
+20: ("Janaka acted and attained", "Leaders and householders can grow spiritually through their daily work."),
+22: ("Even Kṛṣṇa acts", "If even someone with nothing to gain keeps working, effort is not a burden to escape."),
+23: ("Others follow your example", "People copy what they see. Your habits teach more than your words."),
+24: ("Duty keeps the world going", "If everyone dropped their responsibilities, the world would falter."),
+25: ("Act like the attached, without attachment", "Work with the same energy as someone who cares about results, but stay free inside."),
+26: ("Do not unsettle the unready", "Do not shake someone's beliefs without offering a path forward. Help them to act well."),
+27: ("The 'I am the doer' illusion", "Many forces shape your results. Hold your achievements and failures a little lighter."),
+28: ("Senses move among sense objects", "Notice that impulses arise on their own. You can watch them without being ruled by them."),
+29: ("Be gentle with the unsure", "Those who know more should not shake those who know less."),
+31: ("Practise with faith", "Teachings help only when applied. Try them consistently before judging them."),
+32: ("Rejecting without trying", "Criticism without practice teaches nothing. Test an idea before dismissing it."),
+33: ("Everyone follows their nature", "Habits are strong. Plan for your tendencies instead of pretending you have none."),
+34: ("Likes and dislikes are the enemies", "Notice attraction and aversion early. They quietly steer many decisions."),
+36: ("Why do we do wrong against our will?", "Arjuna asks what we all wonder: why do we act against our better judgment?"),
+38: ("Covered like fire by smoke", "Wisdom is not gone when desire clouds it. It is covered, and can be uncovered."),
+39: ("Desire is never satisfied", "Chasing every want never ends. Choose a few and let the rest pass."),
+40: ("Where desire lives", "Desire works through the senses, mind and intellect. Watch each of them."),
+41: ("Control the senses first", "Start with small, practical habits of restraint before tackling big goals."),
+42: ("Senses, mind, intellect, Self", "Each level is subtler than the last. Learn to listen to the deeper one."),
+43: ("Steady yourself by the Self", "Use your deeper self to steady the restless parts. This is the work of a lifetime."),
+}
+
+BG = build([
+    (1, 2, [2, 23]), (3, 8, [1, 3, 44, 24, 36, 8]), (9, 16, [37, 46, 26, 25, 47, 43, 44, 49]),
+    (17, 20, [20, 5, 29, 21]), (21, 24, [15, 41, 48, 50]),
+    (25, 35, [29, 23, 38, 10, 31, 7, 16, 9, 40, 36, 3]), (36, 43, [33, 6, 39, 31, 28, 34, 20, 5]),
+])
