@@ -5,8 +5,7 @@ Read this first in a new session. Tracked in git.
 ## Where we are
 - **Done, live in Supabase and pushed to GitHub: chapters 1–9.**
 - **Chapters 1–18 are live in Supabase.** Chapters 10–18 were deployed one at a time and verified through the public feed API; their 35 referenced background images also returned HTTP 200.
-- The Flutter chapter menu still lists only 1–9, as requested for this Supabase-only rollout. Chapters 10–18 and their migrations are local changes that have not been committed or pushed to GitHub.
-- Last pushed commit when this was updated: `76df7b2 Add chapter rollout progress and per-chapter instructions`.
+- The Flutter chapter menu still lists only 1–9, as requested for this Supabase-only rollout. Chapters 10–18 and their migrations have been committed and pushed to GitHub.
 - Working tree should be clean apart from untracked `tester/` and `content/__pycache__/` (both excluded locally; never commit `tester/`, it has email addresses).
 
 ## What "a chapter is done" means
@@ -39,7 +38,6 @@ Run everything from the repo root `/Users/ajitesh/infinite-content`.
 - Daily mix and chapter mode are separate via `reels.feed_mode`; seed.sql truncates shloks — re-apply chapter migrations if you ever re-seed.
 - Titles/notes are AI-drafted and unreviewed; `translation_credit` says "Draft — pending editorial review".
 - This checkout has no `.secrets/dart_defines.json` or `.secrets/supabase.env`, and `flutter` is not on PATH. The linked Supabase CLI supplied the publishable key for public API verification; `supabase/tools/deploy_chapter_content.sh` deployed the content without touching Flutter or Git.
-- GitHub SSH authentication and the local `gh` token failed in this checkout. Restore push access before committing and pushing the local source, migration, and progress files.
 
 ## Remaining chapters — what to expect
 Verse counts from Heritage; "existing" = verses already in the daily mix; "reels" = what `verify_chapter.py` must report.
@@ -70,12 +68,12 @@ Verse counts from Heritage; "existing" = verses already in the daily mix; "reels
 | 7 | 30 | done, live, pushed |
 | 8 | 28 | done, live, pushed |
 | 9 | 34 → 33 | done, live, pushed |
-| 10 | 42 → 41 | live in Supabase; public API verified; local changes not pushed |
-| 11 | 55 | live in Supabase; public API verified; local changes not pushed |
-| 12 | 20 → 18 | live in Supabase; public API verified; local changes not pushed |
-| 13 | 35 → 31 | live in Supabase; public API verified; local changes not pushed |
-| 14 | 27 | live in Supabase; public API verified; local changes not pushed |
-| 15 | 20 | live in Supabase; public API verified; local changes not pushed |
-| 16 | 24 → 22 | live in Supabase; public API verified; local changes not pushed |
-| 17 | 28 → 27 | live in Supabase; public API verified; local changes not pushed |
-| 18 | 78 → 76 | live in Supabase; public API verified; local changes not pushed |
+| 10 | 42 → 41 | live in Supabase; public API verified; pushed |
+| 11 | 55 | live in Supabase; public API verified; pushed |
+| 12 | 20 → 18 | live in Supabase; public API verified; pushed |
+| 13 | 35 → 31 | live in Supabase; public API verified; pushed |
+| 14 | 27 | live in Supabase; public API verified; pushed |
+| 15 | 20 | live in Supabase; public API verified; pushed |
+| 16 | 24 → 22 | live in Supabase; public API verified; pushed |
+| 17 | 28 → 27 | live in Supabase; public API verified; pushed |
+| 18 | 78 → 76 | live in Supabase; public API verified; pushed |
