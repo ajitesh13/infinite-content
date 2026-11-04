@@ -62,7 +62,7 @@ class ChapterModeNotifier extends Notifier<int?> {
 final chapterModeProvider = NotifierProvider<ChapterModeNotifier, int?>(ChapterModeNotifier.new);
 
 /// Chapters that can be started from the menu (others show as coming soon).
-const kAvailableChapters = {1, 2, 3, 4, 5, 6, 7, 8};
+const kAvailableChapters = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
 class FeedState {
   const FeedState({this.reels = const [], this.cursor = 0, this.loading = false, this.error});

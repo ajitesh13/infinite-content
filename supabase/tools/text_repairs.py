@@ -11,7 +11,8 @@ REPAIRS = [
     (r'ieted', 'quieted'), (r'iescence', 'quiescence'), (r'ietude', 'quietude'), (r'eanimity', 'equanimity'),
     (r'acired', 'acquired'), (r'estabished', 'established'), (r'mee,t', 'meet'), (r'rorn', 'born'),
     (r'Thee he comes', 'There he comes'),
-    (r'seekr', 'seeker'), (r'devotio', 'devotion'), (r'eyrows', 'eyebrows'), (r'rirth', 'birth'), (r'doubtessly', 'doubtlessly'),
+    (r'seekr', 'seeker'), (r'kingl', 'kingly'), (r'heavn', 'heaven'), (r'b the wrong', 'by the wrong'),
+    (r'the hold Brahmins', 'the holy Brahmins'), (r'by devoted to Me', 'be devoted to Me'), (r'devotio', 'devotion'), (r'eyrows', 'eyebrows'), (r'rirth', 'birth'), (r'doubtessly', 'doubtlessly'),
     (r'eyrow', 'eyebrows'), (r'perpertual', 'perpetual'),
 ]
 
