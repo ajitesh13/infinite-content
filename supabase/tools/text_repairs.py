@@ -8,6 +8,9 @@ REPAIRS = [
     (r'exellent', 'excellent'), (r'marshelled', 'marshalled'), (r'ivers', 'quivers'),
     (r'ickly', 'quickly'), (r'attchment', 'attachment'), (r'estion', 'question'), (r'ï1thatï1', 'that'),
     (r'eal', 'equal'), (r'eality', 'equality'), (r'ealising', 'equalising'), (r'ite', 'quite'), (r'thery', 'thereby'),
+    (r'ieted', 'quieted'), (r'iescence', 'quiescence'), (r'ietude', 'quietude'), (r'eanimity', 'equanimity'),
+    (r'acired', 'acquired'), (r'estabished', 'established'), (r'mee,t', 'meet'), (r'rorn', 'born'),
+    (r'Thee he comes', 'There he comes'),
     (r'eyrow', 'eyebrows'), (r'perpertual', 'perpetual'),
 ]
 
