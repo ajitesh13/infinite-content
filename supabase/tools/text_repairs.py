@@ -11,6 +11,7 @@ REPAIRS = [
     (r'ieted', 'quieted'), (r'iescence', 'quiescence'), (r'ietude', 'quietude'), (r'eanimity', 'equanimity'),
     (r'acired', 'acquired'), (r'estabished', 'established'), (r'mee,t', 'meet'), (r'rorn', 'born'),
     (r'Thee he comes', 'There he comes'),
+    (r'seekr', 'seeker'),
     (r'eyrow', 'eyebrows'), (r'perpertual', 'perpetual'),
 ]
 
