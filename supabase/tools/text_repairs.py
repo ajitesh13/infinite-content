@@ -14,6 +14,17 @@ REPAIRS = [
     (r'seekr', 'seeker'), (r'kingl', 'kingly'), (r'heavn', 'heaven'), (r'b the wrong', 'by the wrong'),
     (r'the hold Brahmins', 'the holy Brahmins'), (r'by devoted to Me', 'be devoted to Me'), (r'devotio', 'devotion'), (r'eyrows', 'eyebrows'), (r'rirth', 'birth'), (r'doubtessly', 'doubtlessly'),
     (r'eyrow', 'eyebrows'), (r'perpertual', 'perpetual'),
+    (r'andn', 'and'), (r'montsh', 'months'), (r'gloreis', 'glories'),
+    (r'Skana', 'Skanda'), (r'who who', 'who'),
+    (r'arters', 'quarters'), (r'teriible', 'terrible'), (r'devtoee', 'devotee'),
+    (r'supreme gaol', 'supreme goal'),
+    (r'Dhrama', 'Dharma'), (r'unealled', 'unequalled'),
+    (r'fuffil', 'fulfil'), (r'hoards to wealth', 'hoards of wealth'),
+    (r'Is is', 'Is it'), (r'which is state', 'which is stale'),
+    (r'ï1Tatï1', "'Tat'"), (r'ï1Satï1', "'Sat'"),
+    (r'relinished', 'relinquished'), (r'relinishes', 'relinquishes'),
+    (r'relinishing', 'relinquishing'), (r'conseences', 'consequences'),
+    (r'first as well as in the seel', 'first as well as in the end'),
 ]
 
 def repair(text):

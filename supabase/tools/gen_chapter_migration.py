@@ -6,7 +6,7 @@ verses with no existing shlok row, BG = background number per chapter reel).
  - Verses already in the daily mix keep their Sanskrit, title and note; they only gain Heritage meanings.
    Existing two-verse entries (verse_end) get both verses' translations joined and one reel with both audio files.
  - Every shlok row of the chapter gets one feed_mode='chapter' reel (skipped if it already has one).
-Usage (repo root): python3 supabase/tools/gen_chapter_migration.py <chapter> <timestamp|--todo>
+Usage (repo root): python3 supabase/tools/gen_chapter_migration.py <chapter> <timestamp|--todo> [--staging]
 """
 import importlib, json, os, re, sys
 sys.path.insert(0, os.path.dirname(__file__))
@@ -86,5 +86,7 @@ where s.chapter = {ch}
 
 drop table m{ch};
 """
-open(os.path.join(ROOT, f'supabase/migrations/{ts}_chapter{ch}.sql'), 'w', encoding='utf-8').write(sql)
+out_dir = 'supabase/prepared_migrations' if '--staging' in sys.argv[3:] else 'supabase/migrations'
+os.makedirs(os.path.join(ROOT, out_dir), exist_ok=True)
+open(os.path.join(ROOT, out_dir, f'{ts}_chapter{ch}.sql'), 'w', encoding='utf-8').write(sql)
 print('ok', len(rows))

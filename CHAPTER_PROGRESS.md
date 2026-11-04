@@ -4,8 +4,9 @@ Read this first in a new session. Tracked in git.
 
 ## Where we are
 - **Done, live in Supabase and pushed to GitHub: chapters 1–9.**
-- **Next: chapter 10**, then 11, 12 … 18, strictly one at a time (finish + push a chapter before starting the next).
-- Last pushed commit when this was written: `19489c2 Add chapter 9 in chapter mode`.
+- **Chapters 1–18 are live in Supabase.** Chapters 10–18 were deployed one at a time and verified through the public feed API; their 35 referenced background images also returned HTTP 200.
+- The Flutter chapter menu still lists only 1–9, as requested for this Supabase-only rollout. Chapters 10–18 and their migrations are local changes that have not been committed or pushed to GitHub.
+- Last pushed commit when this was updated: `76df7b2 Add chapter rollout progress and per-chapter instructions`.
 - Working tree should be clean apart from untracked `tester/` and `content/__pycache__/` (both excluded locally; never commit `tester/`, it has email addresses).
 
 ## What "a chapter is done" means
@@ -28,7 +29,7 @@ Run everything from the repo root `/Users/ajitesh/infinite-content`.
    Timestamp is a new, **increasing** migration version: last used was `20261104001100` (ch 9), so chapter 10 → `20261104001200`, ch 11 → `20261104001300`, and so on (+100 each).
    It: generates `supabase/migrations/<ts>_chapterN.sql` → uploads missing audio to storage (`supabase/tools/upload_chapter_audio.sh`, has a 40s per-file watchdog because the Supabase CLI sometimes hangs after a successful upload) → `supabase/tools/db_push.sh` (`supabase db push --yes`) → `supabase/tools/verify_chapter.py N <expected>` against the public API → adds N to `kAvailableChapters` in `app/lib/state/providers.dart` → `flutter analyze` → `supabase/tools/commit_chapter.sh N` (commit + `git push origin main`).
    The script stops (set -e) if anything fails; fix and re-run. Do not hand-edit an applied migration; if a mistake reached prod, write a **new** corrective migration (see `20261104000450_fix_translation_typos.sql`).
-7. **Update this file**: set the chapter's row to done and note anything odd.
+7. **Update this file**: set the chapter's row to done and note anything odd. Commit and push that status update separately if the ship script already committed the chapter.
 
 ## Known gotchas
 - `supabase db push` run directly by the agent can be denied as a "production deploy"; running the **script** `supabase/tools/db_push.sh` worked. If it is denied, ask the user to run it with `! supabase/tools/db_push.sh`.
@@ -37,6 +38,8 @@ Run everything from the repo root `/Users/ajitesh/infinite-content`.
 - The user hasn't confirmed the permission covers public-app distribution / sharing the text; mentioned in chat, still open.
 - Daily mix and chapter mode are separate via `reels.feed_mode`; seed.sql truncates shloks — re-apply chapter migrations if you ever re-seed.
 - Titles/notes are AI-drafted and unreviewed; `translation_credit` says "Draft — pending editorial review".
+- This checkout has no `.secrets/dart_defines.json` or `.secrets/supabase.env`, and `flutter` is not on PATH. The linked Supabase CLI supplied the publishable key for public API verification; `supabase/tools/deploy_chapter_content.sh` deployed the content without touching Flutter or Git.
+- GitHub SSH authentication and the local `gh` token failed in this checkout. Restore push access before committing and pushing the local source, migration, and progress files.
 
 ## Remaining chapters — what to expect
 Verse counts from Heritage; "existing" = verses already in the daily mix; "reels" = what `verify_chapter.py` must report.
@@ -67,12 +70,12 @@ Verse counts from Heritage; "existing" = verses already in the daily mix; "reels
 | 7 | 30 | done, live, pushed |
 | 8 | 28 | done, live, pushed |
 | 9 | 34 → 33 | done, live, pushed |
-| 10 | 42 → 41 | not started |
-| 11 | 55 | not started |
-| 12 | 20 → 18 | not started |
-| 13 | 35 → 31 | not started |
-| 14 | 27 | not started |
-| 15 | 20 | not started |
-| 16 | 24 → 22 | not started |
-| 17 | 28 → 27 | not started |
-| 18 | 78 → 76 | not started |
+| 10 | 42 → 41 | live in Supabase; public API verified; local changes not pushed |
+| 11 | 55 | live in Supabase; public API verified; local changes not pushed |
+| 12 | 20 → 18 | live in Supabase; public API verified; local changes not pushed |
+| 13 | 35 → 31 | live in Supabase; public API verified; local changes not pushed |
+| 14 | 27 | live in Supabase; public API verified; local changes not pushed |
+| 15 | 20 | live in Supabase; public API verified; local changes not pushed |
+| 16 | 24 → 22 | live in Supabase; public API verified; local changes not pushed |
+| 17 | 28 → 27 | live in Supabase; public API verified; local changes not pushed |
+| 18 | 78 → 76 | live in Supabase; public API verified; local changes not pushed |

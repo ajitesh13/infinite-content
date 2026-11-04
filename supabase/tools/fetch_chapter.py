@@ -29,7 +29,7 @@ for v in range(1, last + 1):
     moolam = next(m for m in d['moolams'] if m['is_primary'] and m['script'] == 'Devanagari')['text']
     rec = next(r for r in d['recitations'] if r['source_type'] == 'moolam' and r['reciter_slug'] == 'swmbrhm')
     path = os.path.join(AUDIO_DIR, rec['filename'])
-    if not os.path.exists(path):
+    if not os.path.exists(path) or os.path.getsize(path) == 0:
         open(path, 'wb').write(get(BASE + rec['audio_url'])); time.sleep(0.3)
     e = {'chapter': ch, 'verse': v, 'sanskrit': moolam.strip(), 'audio': rec['filename']}
     for lang, slug in SLUGS.items():
